@@ -204,13 +204,44 @@ app.get('/api/users', async (req, res) => {
 });
 
 // Products.json dosyasını serve et
+// Products.json dosyasını serve et
 app.get('/products.json', async (req, res) => {
     try {
-        const productsPath = path.join(__dirname, 'products.json');
-        const data = await fs.readFile(productsPath, 'utf8');
-        const products = JSON.parse(data);
+        // Birden fazla path dene
+        const possiblePaths = [
+            path.join(__dirname, 'build', 'products.json'),
+            path.join(__dirname, 'products.json'),
+            path.join(__dirname, 'public', 'products.json'),
+            path.join(__dirname, 'data', 'products.json'),
+            './build/products.json',
+            './products.json',
+            './public/products.json',
+            './data/products.json'
+        ];
         
-        res.status(200).json(products);
+        let productsData = null;
+        let foundPath = null;
+        
+        for (const testPath of possiblePaths) {
+            try {
+                const data = await fs.readFile(testPath, 'utf8');
+                productsData = JSON.parse(data);
+                foundPath = testPath;
+                console.log(`Products.json bulundu: ${testPath}`);
+                break;
+            } catch (err) {
+                // Bu path'te dosya yok, devam et
+                continue;
+            }
+        }
+        
+        if (!productsData) {
+            // Hiçbir yerde bulunamadı, varsayılan boş veri döndür
+            console.log('Products.json bulunamadı, boş veri döndürülüyor');
+            productsData = {};
+        }
+        
+        res.status(200).json(productsData);
     } catch (error) {
         console.error('Products.json okuma hatası:', error);
         res.status(500).json({ 
@@ -221,19 +252,71 @@ app.get('/products.json', async (req, res) => {
 });
 
 // Hero products dosyasını serve et
+// Hero products dosyasını serve et
 app.get('/hero-products.json', async (req, res) => {
     try {
-        const heroPath = path.join(__dirname, 'hero-products.json');
-        const data = await fs.readFile(heroPath, 'utf8');
-        const heroProducts = JSON.parse(data);
+        const possiblePaths = [
+            path.join(__dirname, 'build', 'hero-products.json'),
+            path.join(__dirname, 'hero-products.json'),
+            path.join(__dirname, 'public', 'hero-products.json'),
+            path.join(__dirname, 'data', 'hero-products.json'),
+            './build/hero-products.json',
+            './hero-products.json',
+            './public/hero-products.json',
+            './data/hero-products.json'
+        ];
         
-        res.status(200).json(heroProducts);
+        let heroData = null;
+        
+        for (const testPath of possiblePaths) {
+            try {
+                const data = await fs.readFile(testPath, 'utf8');
+                heroData = JSON.parse(data);
+                console.log(`Hero-products.json bulundu: ${testPath}`);
+                break;
+            } catch (err) {
+                continue;
+            }
+        }
+        
+        if (!heroData) {
+            // Varsayılan hero verisi
+            heroData = {
+                "slide1": {
+                    "code": "ORM 0040",
+                    "image": "hero/kaydırak sevenler buraya!!.jpg",
+                    "productId": 121,
+                    "title": "Alaçatı Ev"
+                },
+                "slide2": {
+                    "code": "ORM 0055",
+                    "image": "hero/kaydırak sevenler buraya!! (2).jpg",
+                    "productId": 125,
+                    "title": "Kızıldağ Ahşap Oyun Evi"
+                },
+                "slide3": {
+                    "code": "ORM 0044",
+                    "image": "hero/Adsız tasarım.png",
+                    "productId": 120,
+                    "title": "Kral ve Bahçesi"
+                },
+                "slide4": {
+                    "code": "AKO600403",
+                    "image": "hero/kaydırak sevenler buraya!! (3).jpg",
+                    "productId": 126,
+                    "title": "Kütük Minik Ev"
+                }
+            };
+        }
+        
+        res.status(200).json(heroData);
     } catch (error) {
-        // Dosya yoksa boş obje döndür
+        console.error('Hero-products.json okuma hatası:', error);
         res.status(200).json({});
     }
 });
 
+// Products.json güncelleme API (Qt uygulaması için)
 // Products.json güncelleme API (Qt uygulaması için)
 app.post('/api/update-products', async (req, res) => {
     try {
@@ -246,11 +329,31 @@ app.post('/api/update-products', async (req, res) => {
             });
         }
 
-        // products.json dosyasını güncelle
-        const productsPath = path.join(__dirname, 'products.json');
-        await fs.writeFile(productsPath, JSON.stringify(newProductsData, null, 2));
+        // Mevcut products.json dosyasını bul
+        const possiblePaths = [
+            path.join(__dirname, 'build', 'products.json'),
+            path.join(__dirname, 'products.json'),
+            path.join(__dirname, 'public', 'products.json'),
+            path.join(__dirname, 'data', 'products.json')
+        ];
         
-        console.log('Products.json dosyası güncellendi');
+        let targetPath = possiblePaths[0]; // Varsayılan
+        
+        // Mevcut dosyayı bul
+        for (const testPath of possiblePaths) {
+            try {
+                await fs.access(testPath);
+                targetPath = testPath;
+                break;
+            } catch (err) {
+                continue;
+            }
+        }
+        
+        // products.json dosyasını güncelle
+        await fs.writeFile(targetPath, JSON.stringify(newProductsData, null, 2));
+        
+        console.log(`Products.json dosyası güncellendi: ${targetPath}`);
         
         res.status(200).json({ 
             success: true, 
