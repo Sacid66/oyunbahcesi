@@ -1946,7 +1946,7 @@ let heroProducts = {};
 
 async function loadHeroProducts() {
     try {
-        const response = await fetch('https://raw.githubusercontent.com/Sacid66/oyunbahcesi/main/build/hero-products.json');
+        const response = await fetch('https://oyunbahcesi.onrender.com/hero-products.json');
         if (response.ok) {
             heroProducts = await response.json();
             updateHeroSlides();

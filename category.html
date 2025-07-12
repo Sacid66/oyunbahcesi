@@ -991,13 +991,13 @@
 // Ürünleri JSON'dan yükle
 async function loadCategoryData() {
     try {
-        // GitHub raw URL'den direkt çek
-        const response = await fetch('https://raw.githubusercontent.com/Sacid66/oyunbahcesi/main/build/products.json');
+        // Render URL'den direkt çek
+        const response = await fetch('https://oyunbahcesi.onrender.com/products.json');
         const data = await response.json();
         return data;
     } catch (error) {
         console.error('Kategoriler yüklenirken hata:', error);
-        console.log('GitHub\'dan veri alınamadı');
+        console.log('Render\'dan veri alınamadı');
         return {};
     }
 }
