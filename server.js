@@ -1,37 +1,43 @@
 const express = require('express');
-const sqlite3 = require('sqlite3').verbose();
 const path = require('path');
 const cors = require('cors');
+const fs = require('fs').promises;
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 // Middleware
 app.use(cors());
 app.use(express.json());
 app.use(express.static('.')); // HTML dosyalarını serve et
 
-// SQLite veritabanı bağlantısı
-const db = new sqlite3.Database('./users.db', (err) => {
-    if (err) {
-        console.error('Veritabanı bağlantı hatası:', err.message);
-    } else {
-        console.log('SQLite veritabanına bağlandı.');
-    }
-});
+// Kullanıcı verilerini JSON dosyasında tut
+const USERS_FILE = './users.json';
 
-// Kullanıcılar tablosunu oluştur
-db.run(`CREATE TABLE IF NOT EXISTS users (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    firstName TEXT NOT NULL,
-    lastName TEXT NOT NULL,
-    email TEXT UNIQUE NOT NULL,
-    password TEXT NOT NULL,
-    createdAt DATETIME DEFAULT CURRENT_TIMESTAMP
-)`);
+// JSON dosyasını oku
+async function readUsers() {
+    try {
+        const data = await fs.readFile(USERS_FILE, 'utf8');
+        return JSON.parse(data);
+    } catch (error) {
+        // Dosya yoksa boş array döndür
+        return [];
+    }
+}
+
+// JSON dosyasına yaz
+async function writeUsers(users) {
+    try {
+        await fs.writeFile(USERS_FILE, JSON.stringify(users, null, 2));
+        return true;
+    } catch (error) {
+        console.error('Kullanıcı verisi yazılırken hata:', error);
+        return false;
+    }
+}
 
 // Kayıt API
-app.post('/api/register', (req, res) => {
+app.post('/api/register', async (req, res) => {
     const { firstName, lastName, email, password } = req.body;
     
     if (!firstName || !lastName || !email || !password) {
@@ -41,45 +47,54 @@ app.post('/api/register', (req, res) => {
         });
     }
 
-    // E-posta zaten kayıtlı mı kontrol et
-    db.get('SELECT email FROM users WHERE email = ?', [email], (err, row) => {
-        if (err) {
-            return res.status(500).json({ 
-                success: false, 
-                message: 'Veritabanı hatası!' 
-            });
-        }
+    try {
+        const users = await readUsers();
         
-        if (row) {
+        // E-posta zaten kayıtlı mı kontrol et
+        const existingUser = users.find(user => user.email === email);
+        if (existingUser) {
             return res.status(409).json({ 
                 success: false, 
                 message: 'Bu e-posta adresi zaten kayıtlı!' 
             });
         }
 
-        // Yeni kullanıcıyı ekle
-        db.run('INSERT INTO users (firstName, lastName, email, password) VALUES (?, ?, ?, ?)', 
-            [firstName, lastName, email, password], 
-            function(err) {
-                if (err) {
-                    return res.status(500).json({ 
-                        success: false, 
-                        message: 'Kayıt sırasında hata oluştu!' 
-                    });
-                }
-                
-                res.status(201).json({ 
-                    success: true, 
-                    message: 'Hesap başarıyla oluşturuldu!',
-                    userId: this.lastID 
-                });
-            }
-        );
-    });
+        // Yeni kullanıcı oluştur
+        const newUser = {
+            id: users.length + 1,
+            firstName,
+            lastName,
+            email,
+            password,
+            createdAt: new Date().toISOString()
+        };
+
+        users.push(newUser);
+        
+        const saved = await writeUsers(users);
+        if (!saved) {
+            return res.status(500).json({ 
+                success: false, 
+                message: 'Kayıt sırasında hata oluştu!' 
+            });
+        }
+        
+        res.status(201).json({ 
+            success: true, 
+            message: 'Hesap başarıyla oluşturuldu!',
+            userId: newUser.id 
+        });
+    } catch (error) {
+        console.error('Kayıt hatası:', error);
+        res.status(500).json({ 
+            success: false, 
+            message: 'Sunucu hatası!' 
+        });
+    }
 });
 
 // Giriş API
-app.post('/api/login', (req, res) => {
+app.post('/api/login', async (req, res) => {
     const { email, password } = req.body;
     
     if (!email || !password) {
@@ -89,40 +104,40 @@ app.post('/api/login', (req, res) => {
         });
     }
 
-    // Kullanıcıyı bul
-    db.get('SELECT * FROM users WHERE email = ? AND password = ?', 
-        [email, password], 
-        (err, row) => {
-            if (err) {
-                return res.status(500).json({ 
-                    success: false, 
-                    message: 'Veritabanı hatası!' 
-                });
-            }
-            
-            if (!row) {
-                return res.status(401).json({ 
-                    success: false, 
-                    message: 'E-posta veya şifre yanlış!' 
-                });
-            }
-            
-            res.status(200).json({ 
-                success: true, 
-                message: 'Giriş başarılı!',
-                user: {
-                    id: row.id,
-                    firstName: row.firstName,
-                    lastName: row.lastName,
-                    email: row.email
-                }
+    try {
+        const users = await readUsers();
+        
+        // Kullanıcıyı bul
+        const user = users.find(u => u.email === email && u.password === password);
+        
+        if (!user) {
+            return res.status(401).json({ 
+                success: false, 
+                message: 'E-posta veya şifre yanlış!' 
             });
         }
-    );
+        
+        res.status(200).json({ 
+            success: true, 
+            message: 'Giriş başarılı!',
+            user: {
+                id: user.id,
+                firstName: user.firstName,
+                lastName: user.lastName,
+                email: user.email
+            }
+        });
+    } catch (error) {
+        console.error('Giriş hatası:', error);
+        res.status(500).json({ 
+            success: false, 
+            message: 'Sunucu hatası!' 
+        });
+    }
 });
 
 // E-posta kontrol API
-app.post('/api/check-email', (req, res) => {
+app.post('/api/check-email', async (req, res) => {
     const { email } = req.body;
     
     if (!email) {
@@ -132,22 +147,18 @@ app.post('/api/check-email', (req, res) => {
         });
     }
 
-    db.get('SELECT id, firstName, lastName FROM users WHERE email = ?', [email], (err, row) => {
-        if (err) {
-            return res.status(500).json({ 
-                success: false, 
-                message: 'Veritabanı hatası!' 
-            });
-        }
+    try {
+        const users = await readUsers();
+        const user = users.find(u => u.email === email);
         
-        if (row) {
+        if (user) {
             res.status(200).json({ 
                 success: true, 
                 found: true,
                 message: 'E-posta bulundu',
                 user: {
-                    firstName: row.firstName,
-                    lastName: row.lastName
+                    firstName: user.firstName,
+                    lastName: user.lastName
                 }
             });
         } else {
@@ -157,24 +168,38 @@ app.post('/api/check-email', (req, res) => {
                 message: 'E-posta kayıtlı değil' 
             });
         }
-    });
+    } catch (error) {
+        console.error('E-posta kontrol hatası:', error);
+        res.status(500).json({ 
+            success: false, 
+            message: 'Sunucu hatası!' 
+        });
+    }
 });
 
 // Tüm kullanıcıları listele (test için)
-app.get('/api/users', (req, res) => {
-    db.all('SELECT id, firstName, lastName, email, createdAt FROM users', [], (err, rows) => {
-        if (err) {
-            return res.status(500).json({ 
-                success: false, 
-                message: 'Veritabanı hatası!' 
-            });
-        }
+app.get('/api/users', async (req, res) => {
+    try {
+        const users = await readUsers();
+        const safeUsers = users.map(user => ({
+            id: user.id,
+            firstName: user.firstName,
+            lastName: user.lastName,
+            email: user.email,
+            createdAt: user.createdAt
+        }));
         
         res.status(200).json({ 
             success: true, 
-            users: rows 
+            users: safeUsers 
         });
-    });
+    } catch (error) {
+        console.error('Kullanıcı listesi hatası:', error);
+        res.status(500).json({ 
+            success: false, 
+            message: 'Sunucu hatası!' 
+        });
+    }
 });
 
 // Ana sayfa
@@ -185,18 +210,13 @@ app.get('/', (req, res) => {
 // Server başlat
 app.listen(PORT, () => {
     console.log(`🚀 Server http://localhost:${PORT} adresinde çalışıyor`);
-    console.log('📁 Ana sayfa: http://localhost:3000');
-    console.log('📝 Kayıt: http://localhost:3000/register.html');
-    console.log('🔐 Giriş: http://localhost:3000/login.html');
+    console.log('📁 Ana sayfa: http://localhost:' + PORT);
+    console.log('📝 Kayıt: http://localhost:' + PORT + '/register.html');
+    console.log('🔐 Giriş: http://localhost:' + PORT + '/login.html');
 });
 
 // Graceful shutdown
 process.on('SIGINT', () => {
-    db.close((err) => {
-        if (err) {
-            console.error(err.message);
-        }
-        console.log('Veritabanı bağlantısı kapatıldı.');
-        process.exit(0);
-    });
+    console.log('Server kapatılıyor...');
+    process.exit(0);
 });
