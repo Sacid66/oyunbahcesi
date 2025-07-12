@@ -1,0 +1,1340 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="page-title">Ürün Detayı - Oyun Bahçesi</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Inter Tight", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: #f7f7f7;
+            font-weight: 600;
+            letter-spacing: -0.025em;
+        }
+
+        /* Header styles - Ana sayfayla aynı */
+        .header-top {
+            background-color: #f7f7f7;
+            padding: 8px 0;
+            font-size: 13px;
+            border-bottom: 1px solid #e5e5e5;
+            font-weight: 400;
+        }
+
+        .header-top-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .header-left a {
+            color: #0654ba;
+            text-decoration: none;
+            margin-right: 15px;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+            opacity: 0.9;
+        }
+
+        .header-right a {
+            color: #333;
+            text-decoration: none;
+            margin-left: 15px;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+        }
+
+        .cart-icon {
+            position: relative;
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            color: #333;
+            opacity: 1 !important;
+        }
+
+        .cart-icon::before {
+            content: "";
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%23333" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 22c.6 0 1-.4 1-1s-.4-1-1-1-1 .4-1 1 .4 1 1 1z"/><path d="M20 22c.6 0 1-.4 1-1s-.4-1-1-1-1 .4-1 1 .4 1 1 1z"/><path d="M1 1h4l2.7 13.4c.2 1 1.1 1.6 2.1 1.6h9.7c1 0 1.9-.8 2.1-1.6L23 6H6"/></svg>') no-repeat center;
+            background-size: contain;
+        }
+
+        .cart-icon:hover {
+            opacity: 0.7;
+            transform: scale(1.1);
+            transition: all 0.2s ease;
+        }
+
+        .cart-badge {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background: #ff4444;
+    color: white;
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 700;
+    font-family: "Inter Tight", sans-serif;
+    min-width: 18px;
+    padding: 0 2px;
+    box-sizing: border-box;
+}
+
+.cart-badge.hidden {
+    display: none;
+}
+
+        .notification-icon {
+            position: relative;
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            color: #333;
+            opacity: 1 !important;
+            margin-right: 15px;
+        }
+
+        .notification-icon::before {
+            content: "";
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%23333" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>') no-repeat center;
+            background-size: contain;
+        }
+
+        .notification-icon:hover {
+            opacity: 0.7;
+            transform: scale(1.1);
+            transition: all 0.2s ease;
+        }
+
+        .watchlist-link {
+            color: #333;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 900;
+            font-family: "Inter Tight", sans-serif;
+            letter-spacing: -0.01em;
+            margin-right: 15px;
+            opacity: 1 !important;
+            transition: all 0.2s ease;
+            position: relative;
+            top: -5px;
+        }
+
+        .watchlist-link:hover {
+            color: #0654ba;
+            transform: translateY(-1px);
+        }
+
+        .main-header {
+            background-color: white;
+            padding: 15px 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: visible;
+        }
+
+        .main-header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: auto auto 1fr auto;
+            align-items: center;
+            padding: 0 20px;
+            gap: 20px;
+            min-height: 80px;
+        }
+
+        .logo-container {
+            width: 400px;
+            height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            flex-shrink: 0;
+            overflow: hidden;
+            margin-left: -150px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            max-width: 100%;
+            max-height: 100%;
+        }
+
+        .logo img {
+            height: 760px;
+            width: auto;
+            max-width: none;
+            object-fit: contain;
+            object-position: left center;
+            margin-left: -400px;
+        }
+
+        .category-container {
+            width: auto;
+            flex-shrink: 0;
+        }
+
+        .category-dropdown {
+            position: relative;
+            width: 100%;
+        }
+
+        .category-btn {
+            background: transparent;
+            border: none;
+            padding: 0;
+            cursor: pointer;
+            font-size: 14px;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: center;
+            gap: 2px;
+            white-space: nowrap;
+            width: auto;
+            min-height: 44px;
+            position: relative;
+            padding-right: 15px;
+            font-family: "Inter Tight", sans-serif;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            opacity: 0.8;
+        }
+
+        .category-btn::after {
+            content: "▼";
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 10px;
+        }
+
+        .category-btn:hover {
+            background-color: #f5f5f5;
+            border-radius: 8px;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: calc(100% + 10px);
+            left: -50px;
+            background-color: white;
+            min-width: 800px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            z-index: 1000;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            padding: 20px;
+        }
+
+        .dropdown-content.show {
+            display: block;
+        }
+
+        .dropdown-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .dropdown-column h3 {
+            font-size: 16px;
+            color: #333;
+            margin-bottom: 15px;
+            font-weight: 700;
+            font-family: "Inter Tight", sans-serif;
+            letter-spacing: -0.03em;
+        }
+
+        .dropdown-column ul {
+            list-style: none;
+        }
+
+        .dropdown-column li {
+            margin-bottom: 8px;
+        }
+
+        .dropdown-column a {
+            color: #666;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+            opacity: 0.85;
+        }
+
+        .dropdown-column a:hover {
+            color: #0654ba;
+            font-weight: 600;
+        }
+
+        .search-section {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            min-width: 0;
+        }
+
+        .search-container {
+            display: flex;
+            border: 2px solid #000000;
+            border-radius: 50px;
+            overflow: hidden;
+            background: white;
+            box-shadow: 0 2px 8px rgba(54, 101, 243, 0.15);
+            min-width: 300px;
+            flex: 1;
+            max-width: 600px;
+        }
+
+        .search-input {
+            flex: 1;
+            padding: 12px 20px;
+            border: none;
+            font-size: 15px;
+            outline: none;
+            background: transparent;
+            color: #333;
+            min-width: 0;
+            font-family: "Inter Tight", sans-serif;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+        }
+
+        .search-input::placeholder {
+            color: #999;
+            font-weight: 500;
+            opacity: 0.8;
+        }
+
+        .search-btn {
+            padding: 12px 24px;
+            background: #3665f3;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 700;
+            transition: background-color 0.2s ease;
+            flex-shrink: 0;
+            white-space: nowrap;
+            border-radius: 25px;
+            font-family: "Inter Tight", sans-serif;
+            letter-spacing: -0.01em;
+            text-transform: uppercase;
+        }
+
+        .search-btn:hover {
+            background: #2c54e8;
+        }
+
+        .search-btn:active {
+            background: #1e3a8a;
+            transform: translateY(1px);
+        }
+
+        .header-right-nav {
+            width: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            flex-shrink: 0;
+        }
+
+        .header-right-nav a {
+            color: #333;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+        }
+
+        .breadcrumb {
+            background: white;
+            padding: 15px 0;
+            border-bottom: 1px solid #e5e5e5;
+        }
+
+        .breadcrumb-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+        }
+
+        .breadcrumb a {
+            color: #666;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .breadcrumb a:hover {
+            color: #0654ba;
+        }
+
+        .breadcrumb-separator {
+            color: #999;
+        }
+
+        .breadcrumb-current {
+            color: #333;
+            font-weight: 600;
+        }
+
+        /* Product Detail Styles */
+        .product-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: start;
+        }
+
+        .product-images {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+.main-image {
+    width: 100%;
+    height: 600px;
+    background: transparent;
+    border: none;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+}
+
+.main-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 50px;
+}
+
+        .product-info {
+            padding: 20px 0;
+        }
+
+        .product-title {
+            font-size: 32px;
+            font-weight: 700;
+            color: #333;
+            line-height: 1.2;
+            margin-bottom: 15px;
+            font-family: "Inter Tight", sans-serif;
+            letter-spacing: -0.03em;
+        }
+
+
+        .price-section {
+            margin-bottom: 30px;
+        }
+
+        .current-price {
+            font-size: 36px;
+            font-weight: 800;
+            color: #333;
+            font-family: "Inter Tight", sans-serif;
+            letter-spacing: -0.03em;
+            margin-bottom: 5px;
+        }
+
+        .original-price {
+            font-size: 20px;
+            color: #999;
+            text-decoration: line-through;
+            margin-right: 10px;
+        }
+
+        .discount-badge {
+            background: #ff4444;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 15px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .product-specs {
+            margin-bottom: 30px;
+            padding: 20px 0;
+            border-bottom: 1px solid #e5e5e5;
+        }
+
+        .spec-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 0;
+        }
+
+        .spec-label {
+            font-size: 14px;
+            color: #666;
+            font-weight: 500;
+        }
+
+        .spec-value {
+            font-size: 14px;
+            color: #333;
+            font-weight: 600;
+        }
+
+        .quantity-section {
+            margin-bottom: 20px;
+        }
+
+        .quantity-label {
+            font-size: 14px;
+            color: #333;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .quantity-controls {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .quantity-input {
+            width: 80px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .stock-info {
+            font-size: 14px;
+            color: #666;
+            font-weight: 500;
+        }
+
+        .action-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .buy-now-btn {
+            background: #3665f3;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-family: "Inter Tight", sans-serif;
+            letter-spacing: -0.01em;
+            text-transform: uppercase;
+        }
+
+        .buy-now-btn:hover {
+            background: #2c54e8;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(54, 101, 243, 0.3);
+        }
+
+        .add-to-cart-btn {
+            background: white;
+            color: #3665f3;
+            border: 2px solid #3665f3;
+            padding: 15px 30px;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-family: "Inter Tight", sans-serif;
+            letter-spacing: -0.01em;
+            text-transform: uppercase;
+        }
+
+        .add-to-cart-btn:hover {
+            background: #3665f3;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(54, 101, 243, 0.3);
+        }
+
+        .watchlist-btn {
+            background: white;
+            color: #666;
+            border: 2px solid #e5e5e5;
+            padding: 15px 30px;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-family: "Inter Tight", sans-serif;
+            letter-spacing: -0.01em;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .watchlist-btn:hover {
+            border-color: #ff4444;
+            color: #ff4444;
+            transform: translateY(-2px);
+        }
+
+        .watchlist-btn.active {
+            border-color: #ff4444;
+            color: #ff4444;
+            background: #fff5f5;
+        }
+
+        .watchlist-btn.active:hover {
+            background: #ff4444;
+            color: white;
+        }
+
+        /* Loading State */
+        .loading {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 400px;
+            font-size: 18px;
+            color: #666;
+            grid-column: 1 / -1;
+        }
+
+        .loading::before {
+            content: '';
+            width: 40px;
+            height: 40px;
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #3665f3;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-right: 15px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Not Found State */
+        .not-found {
+            text-align: center;
+            padding: 60px 20px;
+            grid-column: 1 / -1;
+        }
+
+        .not-found h2 {
+            font-size: 32px;
+            color: #333;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .not-found p {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .not-found button {
+            background: #3665f3;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 25px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .not-found button:hover {
+            background: #2c54e8;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .main-header-content {
+                grid-template-columns: auto auto 1fr;
+                gap: 15px;
+            }
+            
+            .logo-container {
+                width: 200px;
+            }
+            
+            .logo img {
+                max-width: 190px;
+            }
+            
+            .category-container {
+                width: 180px;
+            }
+            
+            .header-right-nav {
+                display: none;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .main-header-content {
+                grid-template-columns: auto 1fr;
+                gap: 15px;
+            }
+            
+            .category-container {
+                grid-column: 1 / -1;
+                width: 100%;
+                margin-top: 10px;
+            }
+            
+            .logo-container {
+                width: 180px;
+                height: 60px;
+            }
+            
+            .logo img {
+                height: 540px;
+                max-width: 170px;
+            }
+            
+            .search-container {
+                min-width: 250px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .product-container {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .main-image {
+                height: 300px;
+            }
+            
+            .product-title {
+                font-size: 24px;
+            }
+            
+            .current-price {
+                font-size: 28px;
+            }
+            
+            .main-header-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 15px;
+            }
+            
+            .logo-container {
+                width: 100%;
+                justify-content: center;
+                height: 50px;
+            }
+            
+            .logo img {
+                height: 400px;
+                max-width: 150px;
+            }
+            
+            .search-section {
+                width: 100%;
+            }
+            
+            .search-container {
+                min-width: auto;
+                width: 100%;
+            }
+            
+            .category-container {
+                width: 100%;
+                margin-top: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo img {
+                height: 300px;
+                max-width: 120px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Top -->
+    <div class="header-top">
+        <div class="header-top-content">
+            <div class="header-left" id="headerLeft">
+                <a href="login.html">Hi! Giriş Yap</a> veya 
+                <a href="register.html">kayıt ol</a>
+            </div>
+            <div class="header-right">
+                <a href="#" class="watchlist-link" onclick="openWatchlist()">Watchlist</a>
+                <a href="#" class="notification-icon"></a>
+                <a href="basket.html" class="cart-icon">
+    <span class="cart-badge hidden" id="cartBadge">0</span>
+</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Header -->
+    <div class="main-header">
+        <div class="main-header-content">
+            <div class="logo-container">
+                <a href="index.html" class="logo">
+                    <img src="images/logo.png" alt="Oyun Bahçesi Logo">
+                </a>
+            </div>
+            
+            <div class="category-container">
+                <div class="category-dropdown">
+                    <button class="category-btn" onclick="toggleDropdown()">
+                        <span>Kategoriye</span>
+                        <span>Göre</span>
+                    </button>
+                    <div class="dropdown-content" id="categoryDropdown">
+                        <div class="dropdown-grid">
+                            <div class="dropdown-column">
+                                <h3>Kent Mobilyası</h3>
+                                <ul>
+                                    <li><a href="category.html?category=Kamelyalar">Kamelyalar</a></li>
+                                    <li><a href="category.html?category=Pergole">Pergole</a></li>
+                                    <li><a href="category.html?category=Köprüler">Köprüler</a></li>
+                                    <li><a href="category.html?category=Bekçi%20Kulübesi">Bekçi Kulübesi</a></li>
+                                    <li><a href="category.html?category=Çitler">Çitler</a></li>
+                                    <li><a href="category.html?category=Banklar">Banklar</a></li>
+                                    <li><a href="category.html?category=Saksılar">Saksılar</a></li>
+                                    <li><a href="category.html?category=Kulübeler">Kulübeler</a></li>
+                                    <li><a href="category.html?category=Yer%20ve%20Duvar%20Döşeme">Yer ve Duvar Döşeme</a></li>
+                                </ul>
+                            </div>
+                            <div class="dropdown-column">
+                                <h3>Oyun Grupları ve Parklar</h3>
+                                <ul>
+                                    <li><a href="category.html?category=Parklar">Parklar</a></li>
+                                    <li><a href="category.html?category=Salıncaklar">Salıncaklar</a></li>
+                                    <li><a href="category.html?category=Tırmanmalar">Tırmanmalar</a></li>
+                                    <li><a href="category.html?category=Ahşap%20Oyun%20Evleri">Ahşap Oyun Evleri</a></li>
+                                    <li><a href="category.html?category=Tahtarevalli%20ve%20Zıp%20Zıp">Tahtarevalli ve Zıp Zıp</a></li>
+                                    <li><a href="category.html?category=Kauçuklar">Kauçuklar</a></li>
+                                    <li><a href="category.html?category=Kum%20Havuzu">Kum Havuzu</a></li>
+                                </ul>
+                            </div>
+                            <div class="dropdown-column">
+    <h3>Ormanın Kalbi</h3>
+    <ul>
+        <li><a href="category.html?category=Orman%20Evleri">Orman Evleri</a></li>
+    </ul>
+</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="search-section">
+                <div class="search-container">
+                    <input type="text" class="search-input" placeholder="Herhangi bir şey ara...">
+                </div>
+                <button class="search-btn">Ara</button>
+            </div>
+
+
+        </div>
+    </div>
+
+    <div class="breadcrumb">
+        <div class="breadcrumb-content">
+            <a href="index.html">Ana Sayfa</a>
+            <span class="breadcrumb-separator">›</span>
+            <span id="breadcrumb-category">Kategori</span>
+            <span class="breadcrumb-separator">›</span>
+            <span class="breadcrumb-current" id="breadcrumb-product">Ürün</span>
+        </div>
+    </div>
+
+    <div class="product-container" id="productContainer">
+        <div class="loading">Ürün yükleniyor...</div>
+    </div>
+
+    <script>
+        // URL'den ürün ID'sini al
+        function getProductId() {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get('id');
+        }
+
+        // Tüm ürünleri JSON'dan yükle
+async function getAllProducts() {
+    try {
+        const response = await fetch('https://raw.githubusercontent.com/KULLANICI_ADI/REPO_ADI/main/build/products.json');
+        const data = await response.json();
+        
+        // Tüm kategorilerdeki ürünleri tek bir array'e topla
+        const allProducts = [];
+        Object.values(data).forEach(categoryProducts => {
+            allProducts.push(...categoryProducts);
+        });
+        
+        return allProducts;
+    } catch (error) {
+        console.error('Ürünler yüklenirken hata:', error);
+        return [];
+    }
+}
+
+        // Tüm kategorilerden ürün bul
+        // Tüm kategorilerden ürün bul - ID çakışması kontrolü ile
+async function findProduct(productId) {
+    const allProducts = await getAllProducts();
+    const matches = allProducts.filter(product => product.id.toString() === productId);
+    
+    if (matches.length > 1) {
+        console.warn(`ID çakışması tespit edildi: ${productId}`, matches);
+        // İlk bulunanı döndür
+        return matches[0];
+    }
+    
+    return matches[0] || null;
+}
+
+        // Ürün detaylarını yükle
+        async function loadProductDetails() {
+            const productId = getProductId();
+            
+            if (!productId) {
+                showNotFound();
+                return;
+            }
+            
+            const product = await findProduct(productId);
+            
+            if (!product) {
+                showNotFound();
+                return;
+            }
+            
+            renderProductDetails(product);
+        }
+
+        // Ürün detaylarını render et
+        function renderProductDetails(product) {
+            const container = document.getElementById('productContainer');
+            
+            const isInWishlist = checkIfInWatchlist(product.id.toString());
+            
+            container.innerHTML = `
+                <div class="product-images">
+                    ${product.image ? `<img src="${product.image}" alt="${product.title}" style="width: 100%; height: 600px; object-fit: cover; border-radius: 50px;">` : '<div style="width: 100%; height: 600px; background: #f5f5f5; border-radius: 50px; display: flex; align-items: center; justify-content: center; color: #999;">Resim bulunamadı</div>'}
+                </div>
+                
+                <div class="product-info">
+                    <h1 class="product-title">${product.title}</h1>
+                    
+                    
+                    <div class="price-section">
+                        <div class="current-price">${product.currentPrice}</div>
+                        ${product.originalPrice ? `<span class="original-price">${product.originalPrice}</span>` : ''}
+                        ${product.discount ? `<span class="discount-badge">${product.discount}</span>` : ''}
+                    </div>
+                    
+<div class="product-specs">
+    <div class="spec-row">
+        <span class="spec-label">Ürün Kodu:</span>
+        <span class="spec-value">${product.specs}</span>
+    </div>
+    <div class="spec-row">
+        <span class="spec-label">Mevcut Durum:</span>
+        <span class="spec-value" style="color: #00c853; font-weight: 700;">Stokta var</span>
+    </div>
+    <div class="spec-row">
+        <span class="spec-label">Miktar: 
+            <input type="number" class="quantity-input" value="1" min="1" max="99" style="width: 60px; padding: 5px; border: 1px solid #ddd; border-radius: 4px; margin-left: 8px;">
+        </span>
+        <span class="spec-value"></span>
+    </div>
+</div>
+                    
+                    <div class="action-buttons">
+                        <button class="buy-now-btn" onclick="buyNow('${product.id}')">Hemen Satın Al</button>
+                        <button class="add-to-cart-btn" onclick="addToCart('${product.id}')">Sepete Ekle</button>
+                        <button class="watchlist-btn ${isInWishlist ? 'active' : ''}" onclick="toggleWishlist('${product.id}', '${product.title}', '${product.currentPrice}', '${product.image || ''}', '${product.specs}', this)">
+                            ${isInWishlist ? '♥ İstek Listesinden Çıkar' : '♡ İstek Listesine Ekle'}
+                        </button>
+                    </div>
+                </div>
+            `;
+            
+            // Sayfa başlığını ve breadcrumb'u güncelle
+            document.getElementById('page-title').textContent = `${product.title} - Oyun Bahçesi`;
+            document.getElementById('breadcrumb-category').textContent = product.category || 'Kategori';
+            document.getElementById('breadcrumb-product').textContent = product.title;
+        }
+
+        // Bulunamadı durumu
+        function showNotFound() {
+            const container = document.getElementById('productContainer');
+            container.innerHTML = `
+                <div class="not-found">
+                    <h2>Ürün Bulunamadı</h2>
+                    <p>Aradığınız ürün mevcut değil veya kaldırılmış olabilir.</p>
+                    <button onclick="window.location.href='index.html'">Ana Sayfaya Dön</button>
+                </div>
+            `;
+        }
+
+        // Watchlist kontrol fonksiyonları
+        function checkIfInWatchlist(productId) {
+    const currentUser = localStorage.getItem('currentUser');
+    if (!currentUser) return false;
+    
+    const user = JSON.parse(currentUser);
+    const watchlistKey = `watchlist_${user.email}`;
+    const watchlist = JSON.parse(localStorage.getItem(watchlistKey) || '[]');
+    return watchlist.some(item => item.id == productId); // == kullan, === değil
+}
+
+function toggleWishlist(productId, title, price, image, specs, button) {
+    const currentUser = localStorage.getItem('currentUser');
+    
+    if (!currentUser) {
+        showLoginPrompt(button);
+        return;
+    }
+    
+    const isCurrentlyInWatchlist = checkIfInWatchlist(productId);
+    
+    if (isCurrentlyInWatchlist) {
+        // Çıkar
+        removeFromWatchlist(productId);
+        button.textContent = '♡ İstek Listesine Ekle';
+        button.classList.remove('active');
+    } else {
+        // Ekle
+        const added = addToWatchlist(productId, title, price, image, specs);
+        if (added) {
+            button.textContent = '♥ İstek Listesinden Çıkar';
+            button.classList.add('active');
+        }
+    }
+}
+
+        function addToWatchlist(productId, title, price, image, specs) {
+            const currentUser = localStorage.getItem('currentUser');
+            if (!currentUser) return false;
+            
+            const user = JSON.parse(currentUser);
+            const watchlistKey = `watchlist_${user.email}`;
+            const watchlist = JSON.parse(localStorage.getItem(watchlistKey) || '[]');
+            
+            // Zaten var mı kontrol et
+            const exists = watchlist.find(item => item.id === productId);
+            if (exists) {
+                return false;
+            }
+            
+            // Yeni ürün ekle
+            watchlist.push({
+                id: parseInt(productId),
+                id: productId,
+                title: title,
+                price: price,
+                image: image,
+                specs: specs,
+                addedAt: new Date().toISOString()
+            });
+            
+            localStorage.setItem(watchlistKey, JSON.stringify(watchlist));
+            return true;
+        }
+
+        function removeFromWatchlist(productId) {
+            const currentUser = localStorage.getItem('currentUser');
+            if (!currentUser) return;
+            
+            const user = JSON.parse(currentUser);
+            const watchlistKey = `watchlist_${user.email}`;
+            const watchlist = JSON.parse(localStorage.getItem(watchlistKey) || '[]');
+            const filtered = watchlist.filter(item => item.id !== productId);
+            localStorage.setItem(watchlistKey, JSON.stringify(filtered));
+        }
+
+        // Buton aksiyonları
+        function buyNow(productId) {
+            const quantity = document.querySelector('.quantity-input').value;
+            alert(`${quantity} adet ürün hemen satın alınacak!`);
+        }
+
+        function addToCart(productId) {
+    const currentUser = localStorage.getItem('currentUser');
+    if (!currentUser) {
+        alert('Sepete ürün eklemek için lütfen giriş yapın!');
+        return;
+    }
+    
+    const quantity = parseInt(document.querySelector('.quantity-input').value);
+    const button = document.querySelector('.add-to-cart-btn');
+    button.textContent = 'Sepete Ekleniyor...';
+    button.style.opacity = '0.7';
+    
+    // Mevcut ürün bilgilerini al
+    const productTitle = document.querySelector('.product-title').textContent;
+    const productPrice = document.querySelector('.current-price').textContent;
+    const productImageElement = document.querySelector('.product-images img');
+    const productImage = productImageElement ? productImageElement.src : '';
+    const productSpecs = document.querySelector('.spec-value').textContent;
+    
+    // Sepete ekle (miktar kadar)
+    const user = JSON.parse(currentUser);
+    const basketKey = `basket_${user.email}`;
+    const basket = JSON.parse(localStorage.getItem(basketKey) || '[]');
+    
+    const existingItem = basket.find(item => item.id === productId);
+    if (existingItem) {
+        existingItem.quantity += quantity;
+    } else {
+        basket.push({
+            id: productId,
+            title: productTitle,
+            price: productPrice,
+            image: productImage,
+            specs: productSpecs,
+            quantity: quantity,
+            addedAt: new Date().toISOString()
+        });
+    }
+    
+    localStorage.setItem(basketKey, JSON.stringify(basket));
+    updateCartBadge();
+    
+    setTimeout(() => {
+        button.textContent = 'Sepete Eklendi';
+        button.style.background = '#00c853';
+        button.style.color = 'white';
+        button.style.borderColor = '#00c853';
+        
+        setTimeout(() => {
+            button.textContent = 'Sepete Ekle';
+            button.style.background = 'white';
+            button.style.color = '#3665f3';
+            button.style.borderColor = '#3665f3';
+            button.style.opacity = '1';
+        }, 2000);
+    }, 1000);
+}
+
+        // Kullanıcı durumunu kontrol et
+        function checkUserStatus() {
+            const currentUser = localStorage.getItem('currentUser');
+            const headerLeft = document.getElementById('headerLeft');
+            
+            if (currentUser) {
+                const user = JSON.parse(currentUser);
+                if (user.loggedIn) {
+                    headerLeft.innerHTML = `
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <span style="color: #333; font-weight: 600;">Hi ${user.firstName}! ▼</span>
+                            <a href="#" onclick="logout()" style="color: #0654ba; text-decoration: none; font-size: 12px; opacity: 0.8;">Çıkış</a>
+                        </div>
+                    `;
+                }
+            }
+        }
+
+        function logout() {
+            localStorage.removeItem('currentUser');
+            location.reload();
+        }
+
+        // Dropdown toggle
+        function toggleDropdown() {
+            const dropdown = document.getElementById('categoryDropdown');
+            dropdown.classList.toggle('show');
+        }
+
+        // Close dropdown when clicking outside
+        window.onclick = function(event) {
+            if (!event.target.matches('.category-btn') && !event.target.matches('.category-btn span')) {
+                const dropdown = document.getElementById('categoryDropdown');
+                if (dropdown.classList.contains('show')) {
+                    dropdown.classList.remove('show');
+                }
+            }
+        }
+
+        // Watchlist modal
+        function openWatchlist() {
+            const currentUser = localStorage.getItem('currentUser');
+            
+            if (!currentUser) {
+                alert('Lütfen giriş yapın!');
+                return;
+            }
+            
+            window.location.href = 'watchlist.html';
+        }
+
+        // Arama fonksiyonu
+        document.querySelector('.search-btn').addEventListener('click', function() {
+            const searchTerm = document.querySelector('.search-input').value.trim();
+            if (searchTerm) {
+                window.location.href = `category.html?search=${encodeURIComponent(searchTerm)}`;
+            } else {
+                alert('Lütfen arama yapmak için bir terim girin.');
+            }
+        });
+
+        document.querySelector('.search-input').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                document.querySelector('.search-btn').click();
+            }
+        });
+
+        // Sayfa yüklendiğinde
+function showLoginPrompt(button) {
+    // Önceki dropdown'ı kaldır
+    const existingDropdown = document.getElementById('loginPromptDropdown');
+    if (existingDropdown) {
+        existingDropdown.remove();
+    }
+    
+    // Dropdown HTML oluştur
+    const dropdown = document.createElement('div');
+    dropdown.id = 'loginPromptDropdown';
+    dropdown.innerHTML = `
+        <div style="position: absolute; bottom: 100%; left: 50%; transform: translateX(-50%); background: white; border: 1px solid #ddd; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); width: 300px; z-index: 1000; font-family: 'Inter Tight', sans-serif; margin-bottom: 10px;">
+            <div style="text-align: center; padding: 30px 20px;">
+                <h4 style="font-size: 16px; color: #333; margin-bottom: 10px;">Lütfen giriş yapın</h4>
+                <p style="color: #666; font-size: 14px; margin-bottom: 20px;">İstek listenize ürün eklemek için giriş yapmanız gerekiyor.</p>
+                <button onclick="window.location.href='login.html'" style="background: #3665f3; color: white; border: none; padding: 10px 20px; border-radius: 20px; font-size: 14px; font-weight: 600; cursor: pointer;">
+                    Giriş Yap
+                </button>
+            </div>
+        </div>
+    `;
+    
+    // Butonun pozisyonunu al ve dropdown'u yerleştir
+    button.style.position = 'relative';
+    button.appendChild(dropdown);
+    
+    // 3 saniye sonra otomatik kapat
+    setTimeout(() => {
+        if (dropdown.parentNode) {
+            dropdown.remove();
+        }
+    }, 3000);
+    
+    // Dışarıya tıklayınca kapat
+    setTimeout(() => {
+        document.addEventListener('click', function closePrompt(event) {
+            if (!dropdown.contains(event.target) && !button.contains(event.target)) {
+                dropdown.remove();
+                document.removeEventListener('click', closePrompt);
+            }
+        });
+    }, 100);
+}
+
+function updateCartBadge() {
+    const currentUser = localStorage.getItem('currentUser');
+    const cartBadge = document.getElementById('cartBadge');
+    
+    if (!currentUser || !cartBadge) {
+        if (cartBadge) cartBadge.classList.add('hidden');
+        return;
+    }
+    
+    const user = JSON.parse(currentUser);
+    const basketKey = `basket_${user.email}`;
+    const basket = JSON.parse(localStorage.getItem(basketKey) || '[]');
+    
+    const totalItems = basket.reduce((sum, item) => sum + item.quantity, 0);
+    
+    if (totalItems > 0) {
+        cartBadge.textContent = totalItems > 99 ? '99+' : totalItems.toString();
+        cartBadge.classList.remove('hidden');
+    } else {
+        cartBadge.classList.add('hidden');
+    }
+}
+
+// LocalStorage değişikliklerini dinle
+function listenForCartChanges() {
+    window.addEventListener('storage', function(e) {
+        if (e.key && e.key.includes('basket_')) {
+            updateCartBadge();
+        }
+    });
+    
+    // Aynı sekme içindeki değişiklikleri takip et
+    const originalSetItem = localStorage.setItem;
+    localStorage.setItem = function(key, value) {
+        originalSetItem.apply(this, arguments);
+        if (key.includes('basket_')) {
+            updateCartBadge();
+        }
+    };
+}
+
+// Sayfa yüklendiğinde
+document.addEventListener('DOMContentLoaded', function() {
+    checkUserStatus();
+    updateCartBadge();
+    listenForCartChanges(); // BUNU EKLE
+    loadProductDetails();
+});
+    </script>
+</body>
+</html>

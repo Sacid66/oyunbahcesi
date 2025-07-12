@@ -1,0 +1,27 @@
+# C++ Build files
+build/.qt/
+build/CMakeFiles/
+build/imageformats/
+build/installer_files/
+build/output/
+build/platforms/
+build/ProductUploader_autogen/
+build/*.dll
+build/*.exe
+build/*.cmake
+build/*.moc
+build/Makefile
+build/setup.iss
+build/CMakeCache.txt
+
+# IDE files
+.vscode/
+.vs/
+*.user
+*.suo
+*.vcxproj
+*.sln
+
+# OS files
+.DS_Store
+Thumbs.db

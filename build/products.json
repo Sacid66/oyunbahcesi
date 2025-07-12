@@ -1,0 +1,1198 @@
+{
+    "ahsapOyunEvleri": [
+        {
+            "category": "Ahşap Oyun Evleri",
+            "currentPrice": "₺80.250,00",
+            "id": 120,
+            "image": "Ahsap/Kral ve Bahçesi.jpg",
+            "specs": "ORM 0044",
+            "title": "Kral ve Bahçesi"
+        },
+        {
+            "category": "Ahşap Oyun Evleri",
+            "currentPrice": "₺73.830,00",
+            "id": 121,
+            "image": "Ahsap/ALACATI.jpeg",
+            "specs": "ORM 0040",
+            "title": "Alaçatı Ev"
+        },
+        {
+            "category": "Ahşap Oyun Evleri",
+            "currentPrice": "₺117.700,00",
+            "id": 122,
+            "image": "Ahsap/branda.jpg",
+            "specs": "AKO600402",
+            "title": "Brandalı Ev"
+        },
+        {
+            "category": "Ahşap Oyun Evleri",
+            "currentPrice": "₺50.290,00",
+            "id": 123,
+            "image": "Ahsap/fleksi.png",
+            "specs": "ORM 0066",
+            "title": "Şato Ahşap Oyun Evi"
+        },
+        {
+            "category": "Ahşap Oyun Evleri",
+            "currentPrice": "₺143.104,00",
+            "id": 124,
+            "image": "Ahsap/GUNEYLISATO.jpg",
+            "specs": "AKO600405",
+            "title": "Güneyli Ahşap Oyun Ev"
+        },
+        {
+            "category": "Ahşap Oyun Evleri",
+            "currentPrice": "₺39.590,00",
+            "id": 125,
+            "image": "Ahsap/KızıldagAhsap.jpg",
+            "specs": "ORM 0055",
+            "title": "Kızıldağ Ahşap Oyun Evi"
+        },
+        {
+            "category": "Ahşap Oyun Evleri",
+            "currentPrice": "₺83.902,00",
+            "id": 126,
+            "image": "Ahsap/kutukminiev.jpg",
+            "specs": "AKO600403",
+            "title": "Kütük Minik Ev"
+        },
+        {
+            "category": "Ahşap Oyun Evleri",
+            "currentPrice": "₺41.730,00",
+            "id": 127,
+            "image": "Ahsap/mini_isik.jpeg",
+            "specs": "AKO600403",
+            "title": "Minik Işıklı Ev"
+        },
+        {
+            "category": "Ahşap Oyun Evleri",
+            "currentPrice": "₺124.714,00",
+            "id": 128,
+            "image": "Ahsap/oyungemievi.jpg",
+            "specs": "AKO600401",
+            "title": "Gemi Oyun Evi"
+        },
+        {
+            "category": "Ahşap Oyun Evleri",
+            "currentPrice": "₺123.366,00",
+            "id": 129,
+            "image": "Ahsap/verandali_Ev.jpg",
+            "specs": "AKO600404",
+            "title": "Verandalı Oyun Evi"
+        }
+    ],
+    "banklar": [
+        {
+            "category": "Banklar",
+            "currentPrice": "₺47.507,00",
+            "id": 78,
+            "image": "banklar/agaccevirme.jpg",
+            "specs": "AKO21001",
+            "title": "Ağaç Çevirme Bank"
+        },
+        {
+            "category": "Banklar",
+            "currentPrice": "₺25.680,00",
+            "id": 79,
+            "image": "banklar/sirtlipiknik.jpg",
+            "specs": "AKO21002",
+            "title": "Sırtlı Piknik Masası"
+        },
+        {
+            "category": "Banklar",
+            "currentPrice": "₺7.216,00",
+            "id": 80,
+            "image": "banklar/copkutusu.jpg",
+            "specs": "AKO21003",
+            "title": "Perporje Çöp Kovası"
+        },
+        {
+            "category": "Banklar",
+            "currentPrice": "₺15.587,00",
+            "id": 81,
+            "image": "banklar/kolcaklibank.jpg",
+            "specs": "AKO21007",
+            "title": "Perporje Kolçaklı Bank"
+        },
+        {
+            "category": "Banklar",
+            "currentPrice": "₺14.403,00",
+            "id": 82,
+            "image": "banklar/kolcaksizbank.jpg",
+            "specs": "AKO21008",
+            "title": "Perporje Kolçaksız Bank"
+        },
+        {
+            "category": "Banklar",
+            "currentPrice": "₺53.302,00",
+            "id": 83,
+            "image": "banklar/yildiz_bank.jpg",
+            "specs": "AKO21010",
+            "title": "Yıldız Bank"
+        },
+        {
+            "category": "Banklar",
+            "currentPrice": "₺53.302,00",
+            "id": 84,
+            "image": "banklar/manolyabank.jpg",
+            "specs": "AKO21011",
+            "title": "Manolya Bank"
+        },
+        {
+            "category": "Banklar",
+            "currentPrice": "₺22.700,00",
+            "id": 85,
+            "image": "banklar/saksili_bank.jpg",
+            "specs": "AKO21012",
+            "title": "Saksılı Bank"
+        },
+        {
+            "category": "Banklar",
+            "currentPrice": "₺24.008,00",
+            "id": 86,
+            "image": "banklar/engelsiz_bank.jpg",
+            "specs": "AKO21017",
+            "title": "Engelsiz Bank"
+        },
+        {
+            "category": "Banklar",
+            "currentPrice": "₺58.237,00",
+            "id": 87,
+            "image": "banklar/catili_piknik_bank.jpeg",
+            "specs": "AKO21018",
+            "title": "Çatılı Piknik Masası"
+        },
+        {
+            "category": "Banklar",
+            "currentPrice": "₺54.297,00",
+            "id": 88,
+            "image": "banklar/direksiz_catili_bank.jpeg",
+            "specs": "AKO21020",
+            "title": "Direksiz Çatılı Piknik Masası"
+        },
+        {
+            "category": "Banklar",
+            "currentPrice": "₺9.384,00",
+            "id": 89,
+            "image": "banklar/klasik.bank.jpeg",
+            "specs": "AKO21021",
+            "title": "Klasik Bank"
+        },
+        {
+            "category": "Banklar",
+            "currentPrice": "₺27.820,00",
+            "id": 90,
+            "image": "banklar/su_kum_havuzlu_bank.jpeg",
+            "specs": "ORM 0057",
+            "title": "Bank ve Kum Su Havuzu"
+        },
+        {
+            "category": "Banklar",
+            "currentPrice": "₺28.355,00",
+            "id": 91,
+            "image": "banklar/dortlu_bank.jpeg",
+            "specs": "ORM 0059",
+            "title": "Dörtlü Ahşap Bahçe Bankı"
+        }
+    ],
+    "bekciKulubesi": [
+        {
+            "category": "Bekçi Kulübesi",
+            "currentPrice": "₺101.617,00",
+            "id": 63,
+            "image": "bekci_kulubesi/ferah.jpg",
+            "specs": "AKO31001",
+            "title": "Ferah Bekçi Kulubesi"
+        },
+        {
+            "category": "Bekçi Kulübesi",
+            "currentPrice": "₺85.785,00",
+            "id": 64,
+            "image": "bekci_kulubesi/kare_bekci_kulube.jpg",
+            "specs": "AKO31002",
+            "title": "Kare Bekçi Kulubesi"
+        },
+        {
+            "category": "Bekçi Kulübesi",
+            "currentPrice": "₺164.959,00",
+            "id": 65,
+            "image": "bekci_kulubesi/kutuk_bekci_kulube.jpg",
+            "specs": "AKO31003",
+            "title": "Kütük Bekçi Kulubesi"
+        }
+    ],
+    "citler": [
+        {
+            "category": "Çitler",
+            "currentPrice": "₺3.593,00",
+            "id": 66,
+            "image": "citler/klasik_cit.jpg",
+            "specs": "AKO41001",
+            "title": "Klasik Çit"
+        },
+        {
+            "category": "Çitler",
+            "currentPrice": "₺5.544,00",
+            "id": 67,
+            "image": "citler/capraz_korkuluk.jpg",
+            "specs": "AKO41002",
+            "title": "Çapraz Korkuluk"
+        },
+        {
+            "category": "Çitler",
+            "currentPrice": "₺6.511,00",
+            "id": 68,
+            "image": "citler/duvarustucit.jpeg",
+            "specs": "AKO41003",
+            "title": "Duvar Üstü Çit"
+        },
+        {
+            "category": "Çitler",
+            "currentPrice": "₺6.270,00",
+            "id": 69,
+            "image": "citler/dalgali_cit.jpg",
+            "specs": "AKO41004",
+            "title": "Dalgalı Çit"
+        },
+        {
+            "category": "Çitler",
+            "currentPrice": "₺4.444,00",
+            "id": 70,
+            "image": "citler/dumduzcit.jpg",
+            "specs": "AKO41005",
+            "title": "Düz Çit"
+        },
+        {
+            "category": "Çitler",
+            "currentPrice": "₺4.559,00",
+            "id": 71,
+            "image": "citler/klasik_duvar_cit.jpg",
+            "specs": "AKO41006",
+            "title": "Klasik Duvar Çit"
+        },
+        {
+            "category": "Çitler",
+            "currentPrice": "₺4.796,00",
+            "id": 72,
+            "image": "citler/arabolme_cit.jpg",
+            "specs": "AKO41007",
+            "title": "Ara Bölme Çit"
+        },
+        {
+            "category": "Çitler",
+            "currentPrice": "₺4.772,00",
+            "id": 73,
+            "image": "citler/kapili_cit.jpg",
+            "specs": "AKO41008",
+            "title": "Kapılı Çit"
+        },
+        {
+            "category": "Çitler",
+            "currentPrice": "₺4.079,00",
+            "id": 74,
+            "image": "citler/park_koruma_cit.jpg",
+            "specs": "AKO41009",
+            "title": "Park Koruma Çit"
+        },
+        {
+            "category": "Çitler",
+            "currentPrice": "₺6.027,00",
+            "id": 75,
+            "image": "citler/figurlu_cit.jpg",
+            "specs": "AKO41010",
+            "title": "Figürlü Çit"
+        },
+        {
+            "category": "Çitler",
+            "currentPrice": "₺3.210,00",
+            "id": 76,
+            "image": "citler/halatli_cit.jpg",
+            "specs": "AKO41011",
+            "title": "Halatlı Çit"
+        },
+        {
+            "category": "Çitler",
+            "currentPrice": "₺6.221,00",
+            "id": 77,
+            "image": "citler/kare_cicek_cit.jpg",
+            "specs": "AKO41010",
+            "title": "Kare Çiçeklik Çit"
+        }
+    ],
+    "kamelyalar": [
+        {
+            "category": "Kamelyalar",
+            "currentPrice": "₺246.100",
+            "id": 1,
+            "image": "kamelya/Açık Sınıf Kamelya.jpeg",
+            "specs": "ORM 0046",
+            "title": "Açık Sınıf Kamelya"
+        },
+        {
+            "category": "Kamelyalar",
+            "currentPrice": "₺59.389",
+            "id": 2,
+            "image": "kamelya/Ahşap Resepsiyon.jpg",
+            "specs": "AKO500308",
+            "title": "Ahşap Resepsiyon"
+        },
+        {
+            "category": "Kamelyalar",
+            "currentPrice": "₺115.726",
+            "id": 3,
+            "image": "kamelya/Bahçeli Kamelya.jpg",
+            "specs": "AKO500311",
+            "title": "Bahçeli Kamelya"
+        },
+        {
+            "category": "Kamelyalar",
+            "currentPrice": "₺211.154",
+            "id": 4,
+            "image": "kamelya/Balkon Veranda.jpg",
+            "specs": "AKO500317",
+            "title": "Balkon Veranda"
+        },
+        {
+            "category": "Kamelyalar",
+            "currentPrice": "₺250.745",
+            "id": 5,
+            "image": "kamelya/Çatı Veranda.jpg",
+            "specs": "AKO500302",
+            "title": "Çatı Veranda"
+        },
+        {
+            "category": "Kamelyalar",
+            "currentPrice": "₺197.706",
+            "id": 6,
+            "image": "kamelya/Çiçekli Kamelya.jpg",
+            "specs": "AKO500313",
+            "title": "Çiçekli Kamelya"
+        },
+        {
+            "category": "Kamelyalar",
+            "currentPrice": "₺212.213",
+            "id": 7,
+            "image": "kamelya/Çift Alınlık Kamelya.jpg",
+            "specs": "AKO500312",
+            "title": "Çift Alınlık Kamelya"
+        },
+        {
+            "category": "Kamelyalar",
+            "currentPrice": "₺186.083",
+            "id": 8,
+            "image": "kamelya/Dikdörtgen Kamelya.jpg",
+            "specs": "AKO500304",
+            "title": "Dikdörtgen Kamelya"
+        },
+        {
+            "category": "Kamelyalar",
+            "currentPrice": "₺102.937",
+            "id": 9,
+            "image": "kamelya/Havuz Başı Kare Mini Bar.jpg",
+            "specs": "AKO500309",
+            "title": "Havuz Başı Kare Mini Bar"
+        },
+        {
+            "category": "Kamelyalar",
+            "currentPrice": "₺382.696",
+            "id": 10,
+            "image": "kamelya/Havuz Başı Mini Bar.jpg",
+            "specs": "AKO500307",
+            "title": "Havuz Başı Mini Bar"
+        },
+        {
+            "category": "Kamelyalar",
+            "currentPrice": "₺128.314",
+            "id": 11,
+            "image": "kamelya/Kare Kamelya.jpg",
+            "specs": "AKO500306",
+            "title": "Kare Kamelya"
+        },
+        {
+            "category": "Kamelyalar",
+            "currentPrice": "₺23.763",
+            "id": 12,
+            "image": "kamelya/Köşe Veranda.jpg",
+            "specs": "AKO500301",
+            "title": "Köşe Veranda"
+        },
+        {
+            "category": "Kamelyalar",
+            "currentPrice": "₺286.229",
+            "id": 13,
+            "image": "kamelya/Özel Kamelya.jpg",
+            "specs": "AKO500310",
+            "title": "Özel Kamelya"
+        },
+        {
+            "category": "Kamelyalar",
+            "currentPrice": "₺593.839",
+            "id": 14,
+            "image": "kamelya/Sekizgen Kamelya.jpg",
+            "specs": "AKO500303",
+            "title": "Sekizgen Kamelya"
+        },
+        {
+            "category": "Kamelyalar",
+            "currentPrice": "₺241.809",
+            "id": 15,
+            "image": "kamelya/Taşlı Kamelya.jpeg",
+            "specs": "AKO500316",
+            "title": "Taşlı Kamelya"
+        },
+        {
+            "category": "Kamelyalar",
+            "currentPrice": "₺197.940",
+            "id": 16,
+            "image": "kamelya/Yuvalı Kamelya.jpeg",
+            "specs": "AKO500315",
+            "title": "Yuvalı Kamelya"
+        },
+        {
+            "category": "Kamelyalar",
+            "currentPrice": "₺74.028",
+            "id": 17,
+            "image": "kamelya/Yuvarlak Masalı Kamelya.jpg",
+            "specs": "AKO500305",
+            "title": "Yuvarlak Masalı Kamelya"
+        }
+    ],
+    "kaucuklar": [
+        {
+            "category": "Kauçuklar",
+            "currentPrice": "₺1.287,00",
+            "id": 134,
+            "image": "kaucuk/kare_kaucuk.jpg",
+            "specs": "AKO600803",
+            "title": "Kare Kaucuk Kaplama"
+        }
+    ],
+    "koprular": [
+        {
+            "category": "Köprüler",
+            "currentPrice": "₺77.150,00",
+            "id": 30,
+            "image": "kopru/Klasik Ahşap Köprü.png",
+            "specs": "AKO500701",
+            "title": "Klasik Ahşap Köprü"
+        },
+        {
+            "category": "Köprüler",
+            "currentPrice": "₺101.265,00",
+            "id": 31,
+            "image": "kopru/irmakahsapkopru.jpg",
+            "specs": "AKO500702",
+            "title": "Irmak Ahşap Köprü"
+        },
+        {
+            "category": "Köprüler",
+            "currentPrice": "₺35.640,00",
+            "id": 32,
+            "image": "kopru/merdivenkucuk.jpg",
+            "specs": "AKO500703",
+            "title": "Merdiven Küçük"
+        }
+    ],
+    "kulubeler": [
+        {
+            "category": "Kulübeler",
+            "currentPrice": "₺47.743,00",
+            "id": 94,
+            "image": "hayvan_kulube/ayakli_kulube.jpg",
+            "specs": "AKO61006",
+            "title": "Ayaklı Tavuk Kümesi"
+        },
+        {
+            "category": "Kulübeler",
+            "currentPrice": "₺26.655,00",
+            "id": 95,
+            "image": "hayvan_kulube/duz_mini_kulube.jpg",
+            "specs": "AKO61003",
+            "title": "Düz Mini Kulübe"
+        },
+        {
+            "category": "Kulübeler",
+            "currentPrice": "₺35.530,00",
+            "id": 96,
+            "image": "hayvan_kulube/ikiz_kopek_kulube.jpg",
+            "specs": "AKO61008",
+            "title": "İkiz Köpek Kulübesi"
+        },
+        {
+            "category": "Kulübeler",
+            "currentPrice": "₺38.502,00",
+            "id": 97,
+            "image": "hayvan_kulube/kangal_kopek_kulube.jpg",
+            "specs": "AKO61005",
+            "title": "Kangal Köpek Kulübesi"
+        },
+        {
+            "category": "Kulübeler",
+            "currentPrice": "₺26.395,00",
+            "id": 98,
+            "image": "hayvan_kulube/kucuk_catili_.jpg",
+            "specs": "AKO61004",
+            "title": "Küçük Çatılı Köpek Kulübesi"
+        },
+        {
+            "category": "Kulübeler",
+            "currentPrice": "₺12.836,00",
+            "id": 99,
+            "image": "hayvan_kulube/kus_kulubesi.jpg",
+            "specs": "AKO61007",
+            "title": "Kuş Kümesi"
+        },
+        {
+            "category": "Kulübeler",
+            "currentPrice": "₺41.449,00",
+            "id": 100,
+            "image": "hayvan_kulube/tavuk_kumesi.jpg",
+            "specs": "AKO61001",
+            "title": "Tavuk Kümesi"
+        }
+    ],
+    "kumHavuzu": [
+        {
+            "category": "Kum Havuzu",
+            "currentPrice": "₺98.975,00",
+            "id": 135,
+            "image": "kumhavuz/kutukyuvarlakhavuz.jpeg",
+            "specs": "AKO600605",
+            "title": "Kütük Yuvarlak Kum Havuzu"
+        },
+        {
+            "category": "Kum Havuzu",
+            "currentPrice": "₺46.198,00",
+            "id": 136,
+            "image": "kumhavuz/oturakli.jpg",
+            "specs": "AKO600606",
+            "title": "Oturaklı Kum Havuzu"
+        },
+        {
+            "category": "Kum Havuzu",
+            "currentPrice": "₺51.464,00",
+            "id": 137,
+            "image": "kumhavuz/oturak_masali.jpeg",
+            "specs": "AKO600607",
+            "title": "Oturaklı Masalı Kum Havuzu"
+        },
+        {
+            "category": "Kum Havuzu",
+            "currentPrice": "₺74.028,00",
+            "id": 138,
+            "image": "kumhavuz/catili_kum_havuz.jpg",
+            "specs": "AKO600609",
+            "title": "Çatılı Kum Havuzu"
+        },
+        {
+            "category": "Kum Havuzu",
+            "currentPrice": "₺72.585,00",
+            "id": 139,
+            "image": "kumhavuz/kutukgemi.jpg",
+            "specs": "AKO600604",
+            "title": "Kütük Gemi Kum Havuzu"
+        },
+        {
+            "category": "Kum Havuzu",
+            "currentPrice": "₺62.186,00",
+            "id": 140,
+            "image": "kumhavuz/kutuk_kum_havuz.jpg",
+            "specs": "AKO600608",
+            "title": "Kütük Kum Havuzu"
+        },
+        {
+            "category": "Kum Havuzu",
+            "currentPrice": "₺36.168,00",
+            "id": 141,
+            "image": "kumhavuz/altigen.jpg",
+            "specs": "AKO600601",
+            "title": "Altıgen Kum Havuzu"
+        },
+        {
+            "category": "Kum Havuzu",
+            "currentPrice": "₺103.588,00",
+            "id": 142,
+            "image": "kumhavuz/araba_kum_havuz.jpeg",
+            "specs": "AKO600602",
+            "title": "Araba Kum Havuzu"
+        },
+        {
+            "category": "Kum Havuzu",
+            "currentPrice": "₺65.994,00",
+            "id": 143,
+            "image": "kumhavuz/bayrakli_gemi_havuz.jpeg",
+            "specs": "AKO600603",
+            "title": "Bayraklı Gemi Kum Havuzu"
+        }
+    ],
+    "ormanEvleri": [
+        {
+            "category": "Orman Evleri",
+            "currentPrice": "₺10001",
+            "id": 144,
+            "image": "orman/WIN_20250221_12_14_25_Pro.jpg",
+            "specs": "fsdf",
+            "title": "cdfefd"
+        }
+    ],
+    "parklar": [
+        {
+            "category": "Parklar",
+            "currentPrice": "₺230.939,00",
+            "id": 33,
+            "image": "Parks/2_kule.png",
+            "specs": "AKO500206",
+            "title": "2 Kuleli Metal Park"
+        },
+        {
+            "category": "Parklar",
+            "currentPrice": "₺375.071,00",
+            "id": 34,
+            "image": "Parks/deniz feneri.jpg",
+            "specs": "AKO500137",
+            "title": "Deniz Feneri Park 24"
+        },
+        {
+            "category": "Parklar",
+            "currentPrice": "₺95.230,00",
+            "id": 35,
+            "image": "Parks/Güneyli park.jpg",
+            "specs": "ORM 0048",
+            "title": "Güneyli park"
+        },
+        {
+            "category": "Parklar",
+            "currentPrice": "₺42.265,00",
+            "id": 36,
+            "image": "Parks/Kuleli Kum havuzu.jpeg",
+            "specs": "ORM 0047",
+            "title": "Kuleli Kum Havuzu"
+        },
+        {
+            "category": "Parklar",
+            "currentPrice": "₺50.290,00",
+            "id": 37,
+            "image": "Parks/Bebek Kule 1.jpeg",
+            "specs": "0RM0053",
+            "title": "Mini Işıklı Kule"
+        },
+        {
+            "category": "Parklar",
+            "currentPrice": "₺123.050,00",
+            "id": 38,
+            "image": "Parks/Mini Bebek park 1.jpg",
+            "specs": "ORM 0042",
+            "title": "Mini Bebek Park"
+        },
+        {
+            "category": "Parklar",
+            "currentPrice": "₺187.250,00",
+            "id": 39,
+            "image": "Parks/kütük.jpg",
+            "specs": "AKO500138",
+            "title": "Kütük Park"
+        },
+        {
+            "category": "Parklar",
+            "currentPrice": "₺253.388,00",
+            "id": 40,
+            "image": "Parks/Park1.jpg",
+            "specs": "AKO500102",
+            "title": "Park 1"
+        },
+        {
+            "category": "Parklar",
+            "currentPrice": "₺369.520,00",
+            "id": 41,
+            "image": "Parks/park2.jpg",
+            "specs": "AKO500103",
+            "title": "Park 2"
+        },
+        {
+            "category": "Parklar",
+            "currentPrice": "₺292.960,00",
+            "id": 42,
+            "image": "Parks/park3.jpg",
+            "specs": "AKO500104",
+            "title": "Park 3"
+        },
+        {
+            "category": "Parklar",
+            "currentPrice": "₺137.185,00",
+            "id": 43,
+            "image": "Parks/Park4.jpg",
+            "specs": "AKO500105",
+            "title": "Park 4"
+        },
+        {
+            "category": "Parklar",
+            "currentPrice": "₺181.900,00",
+            "id": 44,
+            "image": "Parks/Işıklı park.jpg",
+            "specs": "ORM0041",
+            "title": "Işıklı Park"
+        },
+        {
+            "category": "Parklar",
+            "currentPrice": "₺125.369,00",
+            "id": 45,
+            "image": "Parks/Park5.jpg",
+            "specs": "AKO500107",
+            "title": "Park 5"
+        },
+        {
+            "category": "Parklar",
+            "currentPrice": "₺1.227.304,00",
+            "id": 46,
+            "image": "Parks/Park6.jpg",
+            "specs": "AKO500110",
+            "title": "Park 6"
+        },
+        {
+            "category": "Parklar",
+            "currentPrice": "₺193.992,00",
+            "id": 47,
+            "image": "Parks/Park7.jpg",
+            "specs": "AKO500114",
+            "title": "Park 7"
+        },
+        {
+            "category": "Parklar",
+            "currentPrice": "₺369.520,00",
+            "id": 48,
+            "image": "Parks/Park8.jpg",
+            "specs": "AKO500117",
+            "title": "Park 8"
+        },
+        {
+            "category": "Parklar",
+            "currentPrice": "₺106.113,00",
+            "id": 49,
+            "image": "Parks/Park10.jpg",
+            "specs": "AKO500119",
+            "title": "Park 10"
+        },
+        {
+            "category": "Parklar",
+            "currentPrice": "₺65.098,00",
+            "id": 50,
+            "image": "Parks/Park11.jpg",
+            "specs": "AKO500120",
+            "title": "Park 11"
+        },
+        {
+            "category": "Parklar",
+            "currentPrice": "₺235.400,00",
+            "id": 51,
+            "image": "Parks/Büyük Teraslı Park.jpeg",
+            "specs": "ORM0041",
+            "title": "Büyük Teraslı Park"
+        },
+        {
+            "category": "Parklar",
+            "currentPrice": "₺114.526,00",
+            "id": 52,
+            "image": "Parks/Park12.jpg",
+            "specs": "AKO500121",
+            "title": "Park 12"
+        },
+        {
+            "category": "Parklar",
+            "currentPrice": "₺165.392,00",
+            "id": 53,
+            "image": "Parks/Park13.jpg",
+            "specs": "AKO500123",
+            "title": "Park 13"
+        },
+        {
+            "category": "Parklar",
+            "currentPrice": "₺307.496,00",
+            "id": 54,
+            "image": "Parks/Park14.jpeg",
+            "specs": "AKO500124",
+            "title": "Park 14"
+        },
+        {
+            "category": "Parklar",
+            "currentPrice": "₺250.745,00",
+            "id": 55,
+            "image": "Parks/Park15.jpeg",
+            "specs": "AKO500121",
+            "title": "Park 15"
+        },
+        {
+            "category": "Parklar",
+            "currentPrice": "₺224.359,00",
+            "id": 56,
+            "image": "Parks/Park16.jpeg",
+            "specs": "AKO500126",
+            "title": "Park 16"
+        },
+        {
+            "category": "Parklar",
+            "currentPrice": "₺208.650,00",
+            "id": 57,
+            "image": "Parks/Park17.jpeg",
+            "specs": "AKO500127",
+            "title": "Park 17"
+        },
+        {
+            "category": "Parklar",
+            "currentPrice": "₺185.650,00",
+            "id": 58,
+            "image": "Parks/Park19.jpeg",
+            "specs": "AKO500129",
+            "title": "Park 19"
+        },
+        {
+            "category": "Parklar",
+            "currentPrice": "₺190.472,00",
+            "discount": "-18%",
+            "id": 59,
+            "image": "Parks/Park21.jpeg",
+            "originalPrice": "₺232.277,00",
+            "specs": "AKO500134",
+            "title": "Park 21"
+        },
+        {
+            "category": "Parklar",
+            "currentPrice": "₺125.347,00",
+            "id": 60,
+            "image": "Parks/Park22.png",
+            "specs": "AKO500135",
+            "title": "Park 22"
+        },
+        {
+            "category": "Parklar",
+            "currentPrice": "₺142.249,00",
+            "id": 61,
+            "image": "Parks/Park23.jpg",
+            "specs": "AKO500136",
+            "title": "Park 23"
+        },
+        {
+            "category": "Parklar",
+            "currentPrice": "₺332.721,00",
+            "id": 62,
+            "image": "Parks/Park26.jpg",
+            "specs": "AKO500139",
+            "title": "Park 26"
+        }
+    ],
+    "pergole": [
+        {
+            "category": "Pergole",
+            "currentPrice": "₺118.447,00",
+            "id": 18,
+            "image": "pergole/Lavanta pergole.jpg",
+            "specs": "AKO500408",
+            "title": "Lavanta pergole"
+        },
+        {
+            "category": "Pergole",
+            "currentPrice": "₺182.594,00",
+            "id": 19,
+            "image": "pergole/gunespergole.jpg",
+            "specs": "AKO500407",
+            "title": "Güneş Pergole"
+        },
+        {
+            "category": "Pergole",
+            "currentPrice": "₺86.363,00",
+            "id": 20,
+            "image": "pergole/pergole3.jpg",
+            "specs": "AKO500403",
+            "title": "Pergole 3"
+        },
+        {
+            "category": "Pergole",
+            "currentPrice": "₺923.779,00",
+            "id": 21,
+            "image": "pergole/pergole1.jpg",
+            "specs": "AKO500401",
+            "title": "Pergole 1"
+        },
+        {
+            "category": "Pergole",
+            "currentPrice": "₺70.581,00",
+            "id": 22,
+            "image": "pergole/hamak_pergole.jpg",
+            "specs": "AKO500411",
+            "title": "Hamak Pergole"
+        },
+        {
+            "category": "Pergole",
+            "currentPrice": "₺125.369,00",
+            "id": 23,
+            "image": "pergole/pergole2.jpg",
+            "specs": "AKO500402",
+            "title": "Pergole 2"
+        },
+        {
+            "category": "Pergole",
+            "currentPrice": "₺108.499,00",
+            "id": 24,
+            "image": "pergole/mini_pergole.jpg",
+            "specs": "AKO500406",
+            "title": "Mini Pergole"
+        },
+        {
+            "category": "Pergole",
+            "currentPrice": "₺180.830,00",
+            "id": 25,
+            "image": "pergole/yildiz_pergole.jpg",
+            "specs": "AKO500405",
+            "title": "Yıldız Pergole"
+        },
+        {
+            "category": "Pergole",
+            "currentPrice": "₺103.192,00",
+            "id": 26,
+            "image": "pergole/havuzbasipergole.jpg",
+            "specs": "AKO500404",
+            "title": "Havuz Başı Pergole"
+        },
+        {
+            "category": "Pergole",
+            "currentPrice": "₺429.352,00",
+            "id": 27,
+            "image": "pergole/kosk_pergole.jpg",
+            "specs": "AKO500410",
+            "title": "Köşk Pergole"
+        },
+        {
+            "category": "Pergole",
+            "currentPrice": "₺143.104,00",
+            "id": 28,
+            "image": "pergole/sedir_pergole.jpg",
+            "specs": "AKO500409",
+            "title": "Sedir Pergole"
+        },
+        {
+            "category": "Pergole",
+            "currentPrice": "₺123.366,00",
+            "id": 29,
+            "image": "pergole/pergole4.jpg",
+            "specs": "AKO500412",
+            "title": "Pergole 4"
+        },
+        {
+            "category": "Pergole",
+            "currentPrice": "₺10000",
+            "id": 145,
+            "image": "pergole/halfhill.jpg",
+            "specs": "ALOOO",
+            "title": "NEYSE"
+        }
+    ],
+    "saksilar": [
+        {
+            "category": "Saksılar",
+            "currentPrice": "₺12.569,00",
+            "id": 92,
+            "image": "saksilar/sirali_saksi.jpg",
+            "specs": "AKO81001",
+            "title": "Sıralı Saksı Tekerlekli"
+        },
+        {
+            "category": "Saksılar",
+            "currentPrice": "₺10.169,00",
+            "id": 93,
+            "image": "saksilar/tekli_saksi.jpg",
+            "specs": "AKO21005",
+            "title": "Tekli Saksı"
+        }
+    ],
+    "salincaklar": [
+        {
+            "category": "Salıncaklar",
+            "currentPrice": "₺35.680,00",
+            "id": 104,
+            "image": "Salincaklar/RENKLIG.jpg",
+            "specs": "AKO600204",
+            "title": "Renkli gondol"
+        },
+        {
+            "category": "Salıncaklar",
+            "currentPrice": "₺28.450,00",
+            "id": 105,
+            "image": "Salincaklar/IKILI.jpeg",
+            "specs": "AKO600202",
+            "title": "İkili Salıncak"
+        },
+        {
+            "category": "Salıncaklar",
+            "currentPrice": "₺22.668,00",
+            "id": 106,
+            "image": "Salincaklar/TEKLI.jpg",
+            "specs": "AKO600203",
+            "title": "Tekli Salıncak"
+        },
+        {
+            "category": "Salıncaklar",
+            "currentPrice": "₺29.960,00",
+            "id": 107,
+            "image": "Salincaklar/HAMAK.jpeg",
+            "specs": "ORM 0049",
+            "title": "Hamaklı Salıncak"
+        },
+        {
+            "category": "Salıncaklar",
+            "currentPrice": "₺31.345,00",
+            "id": 108,
+            "image": "Salincaklar/GONDOL.jpg",
+            "specs": "AKO600201",
+            "title": "Gondol"
+        }
+    ],
+    "tahtarevalliVeZipZip": [
+        {
+            "category": "Tahtarevalli ve Zıp Zıp",
+            "currentPrice": "₺23.631,00",
+            "id": 130,
+            "image": "zipzip/bisiklet.jpg",
+            "specs": "AKO600504",
+            "title": "Bisiklet Zıpzıp"
+        },
+        {
+            "category": "Tahtarevalli ve Zıp Zıp",
+            "currentPrice": "₺19.254,00",
+            "id": 131,
+            "image": "zipzip/motor.jpg",
+            "specs": "AKO600508",
+            "title": "Motor Zıpzıp"
+        },
+        {
+            "category": "Tahtarevalli ve Zıp Zıp",
+            "currentPrice": "₺68.957,00",
+            "id": 132,
+            "image": "zipzip/buyukyay.jpeg",
+            "specs": "AKO600503",
+            "title": "Büyük Yaylı Ahşap Tahterevall"
+        },
+        {
+            "category": "Tahtarevalli ve Zıp Zıp",
+            "currentPrice": "₺41.449,00",
+            "id": 133,
+            "image": "zipzip/ikili.jpg",
+            "specs": "AKO600507",
+            "title": "İkili tahtarevalli"
+        }
+    ],
+    "tirmanmalar": [
+        {
+            "category": "Tırmanmalar",
+            "currentPrice": "₺44.411",
+            "id": 109,
+            "image": "images/Kale Tırmanma.png",
+            "specs": "AKO600802",
+            "title": "Kale Tırmanma"
+        },
+        {
+            "category": "Tırmanmalar",
+            "currentPrice": "₺68.500",
+            "id": 110,
+            "image": "Tirmanmalar/ikiliahsap.jpg",
+            "specs": "ORM 0067",
+            "title": "İkili Ahşap Tırmanma"
+        },
+        {
+            "category": "Tırmanmalar",
+            "currentPrice": "₺32.800",
+            "id": 111,
+            "image": "Tirmanmalar/altigen.jpg",
+            "specs": "AKO600801",
+            "title": "Altıgen Tırmanma"
+        },
+        {
+            "category": "Tırmanmalar",
+            "currentPrice": "₺28.650",
+            "id": 112,
+            "image": "Tirmanmalar/akyazi.jpg",
+            "specs": "ORM 0051",
+            "title": "Akyazı Tırmanma"
+        },
+        {
+            "category": "Tırmanmalar",
+            "currentPrice": "₺56.900",
+            "id": 113,
+            "image": "Tirmanmalar/ucluahsap.jpeg",
+            "specs": "ORM 0052",
+            "title": "Üçlü Ahşap Parkur Set"
+        },
+        {
+            "category": "Tırmanmalar",
+            "currentPrice": "₺42.300",
+            "id": 114,
+            "image": "Tirmanmalar/ikilitirmanma.jpg",
+            "specs": "AKO600303",
+            "title": "İkili Tırmanma"
+        },
+        {
+            "category": "Tırmanmalar",
+            "currentPrice": "₺18.500",
+            "id": 115,
+            "image": "Tirmanmalar/KARE_TIRMANMA.jpg",
+            "specs": "AKO600301",
+            "title": "Kare Tırmanma"
+        },
+        {
+            "category": "Tırmanmalar",
+            "currentPrice": "₺89.600",
+            "id": 116,
+            "image": "Tirmanmalar/KOMANDO.jpg",
+            "specs": "AKO600305",
+            "title": "Komando Tırmanma"
+        },
+        {
+            "category": "Tırmanmalar",
+            "currentPrice": "₺52.800",
+            "id": 117,
+            "image": "Tirmanmalar/piramit.jpg",
+            "specs": "AKO600307",
+            "title": "Piramit Tırmanma"
+        },
+        {
+            "category": "Tırmanmalar",
+            "currentPrice": "₺78.900",
+            "id": 118,
+            "image": "Tirmanmalar/yatay.jpg",
+            "specs": "AKO600304",
+            "title": "Yatay Tırmanma"
+        },
+        {
+            "category": "Tırmanmalar",
+            "currentPrice": "₺125.600",
+            "id": 119,
+            "image": "Tirmanmalar/zdenge.jpeg",
+            "specs": "ORM 0050",
+            "title": "Z Denge Tahtası"
+        }
+    ],
+    "yerVeDuvarDoseme": [
+        {
+            "category": "Yer ve Duvar Döşeme",
+            "currentPrice": "₺5.789,00",
+            "id": 101,
+            "image": "yer_duvar_doseme/bahce_deck.jpg",
+            "specs": "AKO71002",
+            "title": "Bahçe Deck Köşe"
+        },
+        {
+            "category": "Yer ve Duvar Döşeme",
+            "currentPrice": "₺6.651,00",
+            "id": 102,
+            "image": "yer_duvar_doseme/deck1.jpg",
+            "specs": "AKO71001",
+            "title": "Deck 1 Köşe"
+        },
+        {
+            "category": "Yer ve Duvar Döşeme",
+            "currentPrice": "₺7.188,00",
+            "id": 103,
+            "image": "yer_duvar_doseme/duvardeck.jpg",
+            "specs": "AKO71003",
+            "title": "Duvar Deck"
+        }
+    ]
+}

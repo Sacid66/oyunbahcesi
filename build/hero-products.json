@@ -1,0 +1,26 @@
+{
+    "slide1": {
+        "code": "ORM 0040",
+        "image": "hero/kaydırak sevenler buraya!!.jpg",
+        "productId": 121,
+        "title": "Alaçatı Ev"
+    },
+    "slide2": {
+        "code": "ORM 0055",
+        "image": "hero/kaydırak sevenler buraya!! (2).jpg",
+        "productId": 125,
+        "title": "Kızıldağ Ahşap Oyun Evi"
+    },
+    "slide3": {
+        "code": "ORM 0044",
+        "image": "hero/Adsız tasarım.png",
+        "productId": 120,
+        "title": "Kral ve Bahçesi"
+    },
+    "slide4": {
+        "code": "AKO600403",
+        "image": "hero/kaydırak sevenler buraya!! (3).jpg",
+        "productId": 126,
+        "title": "Kütük Minik Ev"
+    }
+}

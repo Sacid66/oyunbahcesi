@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giriş Yap - Oyun Bahçesi</title>
+    
+    <!-- Modern Google Fonts - Ana sayfa ile aynı -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Inter Tight", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .login-container {
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            width: 100%;
+            max-width: 450px;
+        }
+
+        .login-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .login-title {
+            font-size: 32px;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 15px;
+            letter-spacing: -0.02em;
+        }
+
+        .register-link-top {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .register-link-top a {
+            color: #0654ba;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .register-link-top a:hover {
+            text-decoration: underline;
+        }
+
+        .logo-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            text-decoration: none;
+            color: #0654ba;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .logo-link:hover {
+            text-decoration: underline;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 15px 20px;
+            border: 2px solid #e5e5e5;
+            border-radius: 25px;
+            font-size: 16px;
+            font-family: "Inter Tight", sans-serif;
+            font-weight: 500;
+            background: #f8f9fa;
+            transition: all 0.2s ease;
+            outline: none;
+        }
+
+        .form-input:focus {
+            border-color: #3665f3;
+            background: white;
+            box-shadow: 0 0 0 3px rgba(54, 101, 243, 0.1);
+        }
+
+        .form-input::placeholder {
+            color: #999;
+            font-weight: 400;
+        }
+
+        .password-container {
+            position: relative;
+            display: none;
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+        }
+
+        .password-container.show {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .password-toggle {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: #666;
+            font-size: 16px;
+            padding: 5px;
+        }
+
+        .password-toggle:hover {
+            color: #333;
+        }
+
+        .email-status {
+            margin-top: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        .email-status.show {
+            opacity: 1;
+        }
+
+        .email-status.found {
+            color: #00c853;
+        }
+
+        .email-status.not-found {
+            color: #ff4444;
+        }
+
+        .continue-btn {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: 700;
+            font-family: "Inter Tight", sans-serif;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            letter-spacing: -0.01em;
+            margin-top: 20px;
+        }
+
+        .continue-btn.email-mode {
+            background: #e5e5e5;
+            color: #999;
+            pointer-events: none;
+        }
+
+        .continue-btn.email-mode.active {
+            background: #3665f3;
+            color: white;
+            pointer-events: all;
+        }
+
+        .continue-btn.login-mode {
+            background: #3665f3;
+            color: white;
+        }
+
+        .continue-btn:hover {
+            transform: translateY(-1px);
+        }
+
+        .continue-btn.email-mode.active:hover {
+            background: #2c54e8;
+        }
+
+        .continue-btn.login-mode:hover {
+            background: #2c54e8;
+        }
+
+        .continue-btn:active {
+            background: #1e3a8a;
+            transform: translateY(0);
+        }
+
+        .divider {
+            text-align: center;
+            margin: 30px 0;
+            color: #999;
+            font-size: 14px;
+            position: relative;
+        }
+
+        .divider::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: #e5e5e5;
+            z-index: 1;
+        }
+
+        .divider span {
+            background: white;
+            padding: 0 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .register-link-bottom {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .register-link-bottom a {
+            color: #0654ba;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .register-link-bottom a:hover {
+            text-decoration: underline;
+        }
+
+        .loading {
+            opacity: 0.7;
+            pointer-events: none;
+        }
+
+        .login-message {
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    text-align: center;
+    display: none;
+    transition: all 0.3s ease;
+}
+
+.login-message.success {
+    background: #f0f9ff;
+    color: #0369a1;
+    border: 1px solid #0369a1;
+    display: block;
+}
+
+.login-message.error {
+    background: #fef2f2;
+    color: #dc2626;
+    border: 1px solid #dc2626;
+    display: block;
+}
+
+
+
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            .login-container {
+                padding: 30px 20px;
+            }
+
+            .login-title {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-header">
+            <a href="index.html" class="logo-link">← Oyun Bahçesi'ne dön</a>
+            <h1 class="login-title">Hesabınıza giriş yapın</h1>
+            <p class="register-link-top">
+                Oyun Bahçesi'nde yeni misiniz? <a href="register.html">Hesap oluşturun</a>
+            </p>
+        </div>
+
+        <form id="loginForm">
+            <div class="form-group">
+                <input type="email" class="form-input" id="email" placeholder="E-posta" required>
+                <div class="email-status" id="emailStatus"></div>
+            </div>
+
+            <div class="password-container" id="passwordContainer">
+                <div class="form-group">
+                    <div class="password-container-inner" style="position: relative;">
+                        <input type="password" class="form-input" id="password" placeholder="Şifre" required>
+                        <button type="button" class="password-toggle" onclick="togglePassword()">👁</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="login-message" id="loginMessage"></div>
+
+            <button type="button" class="continue-btn email-mode" id="continueBtn" onclick="handleContinue()">
+                Devam et
+            </button>
+        </form>
+
+        <div class="divider">
+            <span>veya</span>
+        </div>
+
+        <div class="register-link-bottom">
+            Henüz hesabınız yok mu? <a href="register.html">Hesap oluşturun</a>
+        </div>
+    </div>
+
+    <script>
+        // Simüle edilmiş kullanıcı veritabanı (normalde backend'den gelir)
+        
+
+        const referrerUrl = document.referrer || 'index.html';
+        const redirectUrl = referrerUrl.includes('localhost') ? referrerUrl : 'index.html';
+
+        let currentMode = 'email'; // 'email' veya 'login'
+        let userFound = false;
+
+        // E-posta kontrolü
+        // E-posta kontrolü
+async function checkEmail() {
+    const email = document.getElementById('email').value.trim();
+    const emailStatus = document.getElementById('emailStatus');
+    const continueBtn = document.getElementById('continueBtn');
+    
+    if (email.length === 0) {
+        emailStatus.classList.remove('show');
+        continueBtn.classList.remove('active');
+        return;
+    }
+
+    // E-posta formatı kontrolü
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+        emailStatus.textContent = 'Geçerli bir e-posta adresi girin';
+        emailStatus.className = 'email-status show not-found';
+        continueBtn.classList.remove('active');
+        return;
+    }
+
+    try {
+        // API'den e-posta kontrolü
+        const response = await fetch('/api/check-email', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ email: email })
+        });
+
+        const data = await response.json();
+
+        if (data.success && data.found) {
+            emailStatus.textContent = `✓ Hoşgeldin ${data.user.firstName}!`;
+            emailStatus.className = 'email-status show found';
+            continueBtn.classList.add('active');
+            userFound = true;
+        } else {
+            emailStatus.textContent = 'Bu e-posta adresi kayıtlı değil';
+            emailStatus.className = 'email-status show not-found';
+            continueBtn.classList.remove('active');
+            userFound = false;
+        }
+    } catch (error) {
+        console.error('E-posta kontrol hatası:', error);
+        emailStatus.textContent = 'Bağlantı hatası';
+        emailStatus.className = 'email-status show not-found';
+        continueBtn.classList.remove('active');
+        userFound = false;
+    }
+}
+
+        // Devam butonu işlevi
+        function handleContinue() {
+            const email = document.getElementById('email').value.trim();
+            const continueBtn = document.getElementById('continueBtn');
+            
+            if (currentMode === 'email' && userFound) {
+                // Şifre alanını göster
+                document.getElementById('passwordContainer').classList.add('show');
+                continueBtn.textContent = 'Giriş yap';
+                continueBtn.className = 'continue-btn login-mode';
+                currentMode = 'login';
+                
+                // Email alanını disable et
+                document.getElementById('email').disabled = true;
+                document.getElementById('email').style.opacity = '0.7';
+                
+                // Şifre alanına focus
+                setTimeout(() => {
+                    document.getElementById('password').focus();
+                }, 300);
+                
+            } else if (currentMode === 'login') {
+                // Giriş işlemi
+                performLogin();
+            }
+        }
+
+        // Giriş işlemi
+        // Giriş işlemi
+async function performLogin() {
+    const email = document.getElementById('email').value.trim();
+    const password = document.getElementById('password').value;
+    const continueBtn = document.getElementById('continueBtn');
+    
+    continueBtn.textContent = 'Giriş yapılıyor...';
+    continueBtn.classList.add('loading');
+
+    try {
+        // API'ye giriş isteği
+        const response = await fetch('/api/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                email: email,
+                password: password
+            })
+        });
+
+        const data = await response.json();
+
+if (data.success) {
+    // Kullanıcıyı giriş yapmış olarak işaretle
+    localStorage.setItem('currentUser', JSON.stringify({
+        firstName: data.user.firstName,
+        lastName: data.user.lastName,
+        email: data.user.email,
+        loggedIn: true
+    }));
+    
+    // Başarı mesajı göster
+// Başarı mesajı göster
+const loginMessage = document.getElementById('loginMessage');
+loginMessage.textContent = 'Giriş başarılı!';
+loginMessage.className = 'login-message success';
+
+setTimeout(() => {
+    window.location.href = redirectUrl;
+}, 1500);
+} else {
+    // Yanlış şifre
+    const passwordInput = document.getElementById('password');
+    const loginMessage = document.getElementById('loginMessage');
+    
+    passwordInput.style.borderColor = '#ff4444';
+    passwordInput.style.background = '#fff5f5';
+    
+    // Hata mesajı göster
+    loginMessage.textContent = 'Yanlış şifre! Lütfen tekrar deneyin.';
+    loginMessage.className = 'login-message error';
+    
+    setTimeout(() => {
+        passwordInput.style.borderColor = '#e5e5e5';
+        passwordInput.style.background = '#f8f9fa';
+        loginMessage.style.display = 'none';
+    }, 3000);
+    
+    passwordInput.value = '';
+    passwordInput.focus();
+    
+    continueBtn.textContent = 'Giriş yap';
+    continueBtn.classList.remove('loading');
+}
+} catch (error) {
+    console.error('Giriş hatası:', error);
+    
+    // Hata mesajı göster
+    const loginMessage = document.getElementById('loginMessage');
+    loginMessage.textContent = 'Bağlantı hatası. Lütfen tekrar deneyin.';
+    loginMessage.className = 'login-message error';
+    
+    continueBtn.textContent = 'Giriş yap';
+    continueBtn.classList.remove('loading');
+}
+}
+
+        // Şifre görünürlüğü
+        function togglePassword() {
+            const passwordInput = document.getElementById('password');
+            const toggleBtn = document.querySelector('.password-toggle');
+            
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                toggleBtn.textContent = '🙈';
+            } else {
+                passwordInput.type = 'password';
+                toggleBtn.textContent = '👁';
+            }
+        }
+
+        // Event listeners
+        document.addEventListener('DOMContentLoaded', function() {
+            const emailInput = document.getElementById('email');
+            
+            emailInput.addEventListener('input', checkEmail);
+            emailInput.addEventListener('keyup', checkEmail);
+            
+            // Enter tuşu ile devam et
+            document.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    if (currentMode === 'email' && userFound) {
+                        handleContinue();
+                    } else if (currentMode === 'login') {
+                        performLogin();
+                    }
+                }
+            });
+
+            // İlk focus
+            emailInput.focus();
+        });
+
+        // Yeni kullanıcı ekleme fonksiyonu (register.html'den çağrılabilir)
+        function addNewUser(email, password) {
+            registeredUsers.push({ email, password });
+        }
+
+        // Local storage'dan kayıtlı kullanıcıları yükle
+        
+    </script>
+</body>
+</html>

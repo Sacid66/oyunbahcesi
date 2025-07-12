@@ -1,0 +1,1806 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title id="page-title">Kategori - Oyun Bahçesi</title>
+   
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+   
+   <style>
+       * {
+           margin: 0;
+           padding: 0;
+           box-sizing: border-box;
+       }
+
+       body {
+           font-family: "Inter Tight", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+           background-color: #f7f7f7;
+           font-weight: 600;
+           letter-spacing: -0.025em;
+       }
+
+       .header-top {
+           background-color: #f7f7f7;
+           padding: 8px 0;
+           font-size: 13px;
+           border-bottom: 1px solid #e5e5e5;
+           font-weight: 400;
+       }
+
+       .header-top-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+       .header-left a {
+           color: #0654ba;
+           text-decoration: none;
+           margin-right: 15px;
+           font-weight: 700;
+           letter-spacing: -0.01em;
+           opacity: 0.9;
+       }
+
+       .header-right a {
+           color: #333;
+           text-decoration: none;
+           margin-left: 15px;
+           font-weight: 600;
+           letter-spacing: -0.01em;
+       }
+
+.cart-icon {
+    position: relative;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    color: #333;
+    opacity: 1 !important;
+}
+
+.cart-icon::before {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%23333" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 22c.6 0 1-.4 1-1s-.4-1-1-1-1 .4-1 1 .4 1 1 1z"/><path d="M20 22c.6 0 1-.4 1-1s-.4-1-1-1-1 .4-1 1 .4 1 1 1z"/><path d="M1 1h4l2.7 13.4c.2 1 1.1 1.6 2.1 1.6h9.7c1 0 1.9-.8 2.1-1.6L23 6H6"/></svg>') no-repeat center;
+    background-size: contain;
+}
+
+.cart-icon:hover {
+    opacity: 0.7;
+    transform: scale(1.1);
+    transition: all 0.2s ease;
+}
+
+.cart-badge {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background: #ff4444;
+    color: white;
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 700;
+    font-family: "Inter Tight", sans-serif;
+    min-width: 18px;
+    padding: 0 2px;
+    box-sizing: border-box;
+}
+
+.cart-badge.hidden {
+    display: none;
+}
+
+/* BURAYA EKLEYİN: */
+.notification-icon {
+    position: relative;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    color: #333;
+    opacity: 1 !important;
+    margin-right: 15px; /* Sepet ile arasında boşluk */
+}
+
+.notification-icon::before {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%23333" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>') no-repeat center;
+    background-size: contain;
+}
+
+.notification-icon:hover {
+    opacity: 0.7;
+    transform: scale(1.1);
+    transition: all 0.2s ease;
+}
+
+/* BURAYA EKLEYİN: */
+.watchlist-link {
+    color: #333;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 900;
+    font-family: "Inter Tight", sans-serif;
+    letter-spacing: -0.01em;
+    margin-right: 15px;
+    opacity: 1 !important;
+    transition: all 0.2s ease;
+    position: relative;
+    top: -5px; /* BU SATIRI EKLEYİN */
+}
+
+.watchlist-link:hover {
+    color: #0654ba;
+    transform: translateY(-1px);
+}
+
+
+
+       /* Main Header - Ana sayfayla aynı */
+       .main-header {
+           background-color: white;
+           padding: 15px 0;
+           box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+           position: relative;
+           overflow: visible;
+       }
+
+       .main-header-content {
+           max-width: 1400px;
+           margin: 0 auto;
+           display: grid;
+           grid-template-columns: auto auto 1fr auto;
+           align-items: center;
+           padding: 0 20px;
+           gap: 20px;
+           min-height: 80px;
+       }
+
+       /* Logo Containeri - Ana sayfayla aynı boyut */
+       .logo-container {
+           width: 400px;
+           height: 120px;
+           display: flex;
+           align-items: center;
+           justify-content: flex-start;
+           flex-shrink: 0;
+           overflow: hidden;
+           margin-left: -150px;
+       }
+
+       .logo {
+           display: flex;
+           align-items: center;
+           text-decoration: none;
+           max-width: 100%;
+           max-height: 100%;
+       }
+
+       .logo img {
+           height: 760px;
+           width: auto;
+           max-width: none;
+           object-fit: contain;
+           object-position: left center;
+           margin-left: -400px;
+       }
+
+       /* Category Dropdown - Ana sayfayla aynı */
+       .category-container {
+           width: auto;
+           flex-shrink: 0;
+       }
+
+       .category-dropdown {
+           position: relative;
+           width: 100%;
+       }
+
+       .category-btn {
+           background: transparent;
+           border: none;
+           padding: 0;
+           cursor: pointer;
+           font-size: 14px;
+           color: #333;
+           display: flex;
+           flex-direction: column;
+           align-items: flex-start;
+           justify-content: center;
+           gap: 2px;
+           white-space: nowrap;
+           width: auto;
+           min-height: 44px;
+           position: relative;
+           padding-right: 15px;
+           font-family: "Inter Tight", sans-serif;
+           font-weight: 600;
+           letter-spacing: -0.02em;
+           opacity: 0.8;
+       }
+
+       .category-btn::after {
+           content: "▼";
+           position: absolute;
+           right: 0;
+           top: 50%;
+           transform: translateY(-50%);
+           font-size: 10px;
+       }
+
+       .category-btn:hover {
+           background-color: #f5f5f5;
+           border-radius: 8px;
+       }
+
+       .dropdown-content {
+           display: none;
+           position: absolute;
+           top: calc(100% + 10px);
+           left: -50px;
+           background-color: white;
+           min-width: 800px;
+           box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+           z-index: 1000;
+           border: 1px solid #ddd;
+           border-radius: 20px;
+           padding: 20px;
+       }
+
+       .dropdown-content.show {
+           display: block;
+       }
+
+       .dropdown-grid {
+           display: grid;
+           grid-template-columns: repeat(3, 1fr);
+           gap: 30px;
+       }
+
+       .dropdown-column h3 {
+           font-size: 16px;
+           color: #333;
+           margin-bottom: 15px;
+           font-weight: 700;
+           font-family: "Inter Tight", sans-serif;
+           letter-spacing: -0.03em;
+       }
+
+       .dropdown-column ul {
+           list-style: none;
+       }
+
+       .dropdown-column li {
+           margin-bottom: 8px;
+       }
+
+       .dropdown-column a {
+           color: #666;
+           text-decoration: none;
+           font-size: 14px;
+           font-weight: 600;
+           letter-spacing: -0.01em;
+           opacity: 0.85;
+       }
+
+       .dropdown-column a:hover {
+           color: #0654ba;
+           font-weight: 600;
+       }
+
+       /* Search Section - Ana sayfayla aynı */
+       .search-section {
+           display: flex;
+           align-items: center;
+           gap: 15px;
+           min-width: 0;
+       }
+
+       .search-container {
+           display: flex;
+           border: 2px solid #000000;
+           border-radius: 50px;
+           overflow: hidden;
+           background: white;
+           box-shadow: 0 2px 8px rgba(54, 101, 243, 0.15);
+           min-width: 300px;
+           flex: 1;
+           max-width: 600px;
+       }
+
+       .search-input {
+           flex: 1;
+           padding: 12px 20px;
+           border: none;
+           font-size: 15px;
+           outline: none;
+           background: transparent;
+           color: #333;
+           min-width: 0;
+           font-family: "Inter Tight", sans-serif;
+           font-weight: 600;
+           letter-spacing: -0.01em;
+       }
+
+       .search-input::placeholder {
+           color: #999;
+           font-weight: 500;
+           opacity: 0.8;
+       }
+
+       .search-btn {
+           padding: 12px 24px;
+           background: #3665f3;
+           color: white;
+           border: none;
+           cursor: pointer;
+           font-size: 14px;
+           font-weight: 700;
+           transition: background-color 0.2s ease;
+           flex-shrink: 0;
+           white-space: nowrap;
+           border-radius: 25px;
+           font-family: "Inter Tight", sans-serif;
+           letter-spacing: -0.01em;
+           text-transform: uppercase;
+       }
+
+       .search-btn:hover {
+           background: #2c54e8;
+       }
+
+       .search-btn:active {
+           background: #1e3a8a;
+           transform: translateY(1px);
+       }
+
+       /* Header Right Nav - Ana sayfayla aynı */
+       .header-right-nav {
+    width: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-shrink: 0;
+}
+
+       .header-right-nav a {
+           color: #333;
+           text-decoration: none;
+           font-size: 13px;
+           font-weight: 600;
+           letter-spacing: -0.01em;
+       }
+
+       .breadcrumb {
+           background: white;
+           padding: 15px 0;
+           border-bottom: 1px solid #e5e5e5;
+       }
+
+       .breadcrumb-content {
+           max-width: 1400px;
+           margin: 0 auto;
+           padding: 0 20px;
+           display: flex;
+           align-items: center;
+           gap: 8px;
+           font-size: 14px;
+       }
+
+       .breadcrumb a {
+           color: #666;
+           text-decoration: none;
+           font-weight: 500;
+       }
+
+       .breadcrumb a:hover {
+           color: #0654ba;
+       }
+
+       .breadcrumb-separator {
+           color: #999;
+       }
+
+       .breadcrumb-current {
+           color: #333;
+           font-weight: 600;
+       }
+
+       .main-content {
+           max-width: 1400px;
+           margin: 0 auto;
+           padding: 30px 20px;
+           display: grid;
+           grid-template-columns: 250px 1fr;
+           gap: 30px;
+       }
+
+       .category-header {
+           grid-column: 1 / -1;
+           margin-bottom: 20px;
+       }
+
+       .category-title {
+           font-size: 32px;
+           font-weight: 700;
+           color: #333;
+           margin-bottom: 10px;
+       }
+
+       .category-description {
+           font-size: 16px;
+           color: #666;
+           font-weight: 500;
+           line-height: 1.5;
+       }
+
+       .categories-sidebar {
+           background: white;
+           border-radius: 8px;
+           padding: 20px 15px;
+           height: fit-content;
+           position: sticky;
+           top: 20px;
+       }
+
+       .sidebar-title {
+           font-size: 16px;
+           font-weight: 700;
+           color: #333;
+           margin-bottom: 15px;
+           padding-bottom: 8px;
+           border-bottom: 1px solid #eee;
+       }
+
+       .category-list {
+           list-style: none;
+       }
+
+       .category-list li {
+           margin-bottom: 8px;
+       }
+
+       .category-list a {
+           color: #0654ba;
+           text-decoration: none;
+           font-size: 14px;
+           font-weight: 500;
+           display: block;
+           padding: 5px 0;
+           border-radius: 4px;
+           transition: all 0.2s;
+       }
+
+       .category-list a:hover {
+           background: #f0f4ff;
+           padding-left: 8px;
+       }
+
+       .category-list a.active {
+           font-weight: 700;
+           color: #333;
+           background: #f0f4ff;
+           padding-left: 8px;
+       }
+
+       .category-list a.main-category {
+           font-weight: 700;
+           color: #333;
+           font-size: 15px;
+           margin-top: 10px;
+           margin-bottom: 5px;
+       }
+
+       .category-list a.sub-category {
+           padding-left: 15px;
+           font-size: 13px;
+           color: #0654ba;
+       }
+
+       .category-list a.sub-category:hover {
+           padding-left: 20px;
+       }
+
+       .category-list a.current-page {
+           font-weight: 700;
+           color: #333;
+           background: #f0f4ff;
+           padding-left: 20px;
+       }
+
+       .products-section {
+           display: flex;
+           flex-direction: column;
+           gap: 20px;
+       }
+
+       .products-header {
+           display: flex;
+           justify-content: space-between;
+           align-items: center;
+           background: white;
+           padding: 20px 25px;
+           border-radius: 12px;
+           box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+       }
+
+       .results-count {
+           font-size: 16px;
+           color: #333;
+           font-weight: 600;
+       }
+
+       .sort-dropdown {
+           display: flex;
+           align-items: center;
+           gap: 10px;
+       }
+
+       .sort-select {
+           padding: 8px 15px;
+           border: 1px solid #ddd;
+           border-radius: 20px;
+           font-size: 14px;
+           background: white;
+           cursor: pointer;
+       }
+
+       .products-grid {
+           display: grid;
+           grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+           gap: 25px;
+       }
+
+       .product-card {
+           background: white;
+           border-radius: 12px;
+           overflow: hidden;
+           box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+           transition: all 0.3s ease;
+           cursor: pointer;
+       }
+
+       .product-card:hover {
+           transform: translateY(-5px);
+           box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+       }
+
+       .product-image {
+           width: 100%;
+           height: 220px;
+           background: #f8f9fa;
+           display: flex;
+           align-items: center;
+           justify-content: center;
+           position: relative;
+           overflow: hidden;
+       }
+
+       .product-image img {
+           width: 100%;
+           height: 100%;
+           object-fit: cover;
+       }
+
+       .product-image::before {
+           content: '';
+           width: 120px;
+           height: 120px;
+           background: #ddd;
+           border-radius: 8px;
+       }
+
+       .product-image.has-image::before {
+           display: none;
+       }
+
+       .product-badge {
+           position: absolute;
+           top: 12px;
+           left: 12px;
+           background: #ff4444;
+           color: white;
+           padding: 4px 8px;
+           border-radius: 15px;
+           font-size: 11px;
+           font-weight: 700;
+           text-transform: uppercase;
+       }
+
+       .product-info {
+           padding: 20px;
+       }
+
+       .product-title {
+           font-size: 16px;
+           font-weight: 600;
+           color: #333;
+           margin-bottom: 8px;
+           line-height: 1.3;
+       }
+
+       .product-specs {
+           font-size: 13px;
+           color: #666;
+           margin-bottom: 12px;
+           font-weight: 500;
+       }
+
+       .product-price {
+           display: flex;
+           align-items: center;
+           gap: 8px;
+           margin-bottom: 15px;
+       }
+
+       .current-price {
+           font-size: 20px;
+           font-weight: 700;
+           color: #333;
+       }
+
+       .original-price {
+           font-size: 16px;
+           color: #999;
+           text-decoration: line-through;
+       }
+
+       .discount-badge {
+           background: #00c853;
+           color: white;
+           padding: 2px 6px;
+           border-radius: 10px;
+           font-size: 11px;
+           font-weight: 700;
+       }
+
+       .product-actions {
+           display: flex;
+           gap: 10px;
+       }
+
+       .add-to-cart-btn {
+           flex: 1;
+           background: #3665f3;
+           color: white;
+           border: none;
+           padding: 10px 15px;
+           border-radius: 20px;
+           font-size: 14px;
+           font-weight: 600;
+           cursor: pointer;
+       }
+
+       .add-to-cart-btn:hover {
+           background: #2c54e8;
+       }
+
+       .add-to-cart-btn.added {
+           background: #00c853 !important;
+           color: white !important;
+       }
+
+       .wishlist-btn {
+           width: 40px;
+           height: 40px;
+           border: 1px solid #ddd;
+           background: white;
+           border-radius: 50%;
+           display: flex;
+           align-items: center;
+           justify-content: center;
+           cursor: pointer;
+       }
+
+       .wishlist-btn:hover {
+           border-color: #ff4444;
+           color: #ff4444;
+       }
+
+       .pagination {
+           display: flex;
+           justify-content: center;
+           align-items: center;
+           gap: 10px;
+           margin-top: 40px;
+       }
+
+       .pagination-btn {
+           width: 40px;
+           height: 40px;
+           border: 1px solid #ddd;
+           background: white;
+           border-radius: 50%;
+           display: flex;
+           align-items: center;
+           justify-content: center;
+           cursor: pointer;
+           font-size: 14px;
+           font-weight: 600;
+       }
+
+       .pagination-btn:hover {
+           background: #3665f3;
+           color: white;
+           border-color: #3665f3;
+       }
+
+       .pagination-btn.active {
+           background: #3665f3;
+           color: white;
+           border-color: #3665f3;
+       }
+
+       /* Responsive Design */
+       @media (max-width: 1200px) {
+           .main-header-content {
+               grid-template-columns: auto auto 1fr;
+               gap: 15px;
+           }
+           
+           .logo-container {
+               width: 200px;
+           }
+           
+           .logo img {
+               max-width: 190px;
+           }
+           
+           .category-container {
+               width: 180px;
+           }
+           
+           .header-right-nav {
+               display: none;
+           }
+       }
+
+       @media (max-width: 992px) {
+           .main-header-content {
+               grid-template-columns: auto 1fr;
+               gap: 15px;
+           }
+           
+           .category-container {
+               grid-column: 1 / -1;
+               width: 100%;
+               margin-top: 10px;
+           }
+           
+           .logo-container {
+               width: 180px;
+               height: 60px;
+           }
+           
+           .logo img {
+               height: 540px;
+               max-width: 170px;
+           }
+           
+           .search-container {
+               min-width: 250px;
+           }
+       }
+
+       @media (max-width: 768px) {
+           .main-header-content {
+               grid-template-columns: 1fr;
+               text-align: center;
+               gap: 15px;
+           }
+           
+           .logo-container {
+               width: 100%;
+               justify-content: center;
+               height: 50px;
+           }
+           
+           .logo img {
+               height: 400px;
+               max-width: 150px;
+           }
+           
+           .search-section {
+               width: 100%;
+           }
+           
+           .search-container {
+               min-width: auto;
+               width: 100%;
+           }
+           
+           .category-container {
+               width: 100%;
+               margin-top: 15px;
+           }
+       }
+
+       @media (max-width: 480px) {
+           .logo img {
+               height: 300px;
+               max-width: 120px;
+           }
+       }
+   </style>
+</head>
+<body>
+   <!-- Header Top -->
+    <div class="header-top">
+        <div class="header-top-content">
+<div class="header-left" id="headerLeft">
+    <a href="login.html">Hi! Giriş Yap</a> veya 
+    <a href="register.html">kayıt ol</a>
+</div>
+<div class="header-right">
+    <a href="#" class="watchlist-link" onclick="openWatchlist()">Watchlist</a>
+    <a href="#" class="notification-icon"></a>
+    <a href="basket.html" class="cart-icon">
+    <span class="cart-badge hidden" id="cartBadge">0</span>
+</a>
+</div>
+       </div>
+   </div>
+
+   <!-- Main Header -->
+   <div class="main-header">
+       <div class="main-header-content">
+           <div class="logo-container">
+               <a href="index.html" class="logo">
+                   <img src="images/logo.png" alt="Oyun Bahçesi Logo">
+               </a>
+           </div>
+           
+           <div class="category-container">
+               <div class="category-dropdown">
+                   <button class="category-btn" onclick="toggleDropdown()">
+                       <span>Kategoriye</span>
+                       <span>Göre</span>
+                   </button>
+                   <div class="dropdown-content" id="categoryDropdown">
+                       <div class="dropdown-grid">
+                           <div class="dropdown-column">
+                               <h3>Kent Mobilyası</h3>
+                               <ul>
+                                   <li><a href="#" data-category="Kamelyalar">Kamelyalar</a></li>
+                                   <li><a href="#" data-category="Pergole">Pergole</a></li>
+                                   <li><a href="#" data-category="Köprüler">Köprüler</a></li>
+                                   <li><a href="#" data-category="Bekçi Kulübesi">Bekçi Kulübesi</a></li>
+                                   <li><a href="#" data-category="Çitler">Çitler</a></li>
+                                   <li><a href="#" data-category="Banklar">Banklar</a></li>
+                                   <li><a href="#" data-category="Saksılar">Saksılar</a></li>
+                                   <li><a href="#" data-category="Kulübeler">Kulübeler</a></li>
+                                   <li><a href="#" data-category="Yer ve Duvar Döşeme">Yer ve Duvar Döşeme</a></li>
+                               </ul>
+                           </div>
+                           <div class="dropdown-column">
+                               <h3>Oyun Grupları ve Parklar</h3>
+                               <ul>
+                                   <li><a href="#" data-category="Parklar">Parklar</a></li>
+                                   <li><a href="#" data-category="Salıncaklar">Salıncaklar</a></li>
+                                   <li><a href="#" data-category="Tırmanmalar">Tırmanmalar</a></li>
+                                   <li><a href="#" data-category="Ahşap Oyun Evleri">Ahşap Oyun Evleri</a></li>
+                                   <li><a href="#" data-category="Tahtarevalli ve Zıp Zıp">Tahtarevalli ve Zıp Zıp</a></li>
+                                   <li><a href="#" data-category="Kauçuklar">Kauçuklar</a></li>
+                                   <li><a href="#" data-category="Kum Havuzu">Kum Havuzu</a></li>
+                               </ul>
+                           </div>
+                           <div class="dropdown-column">
+    <h3>Ormanın Kalbi</h3>
+    <ul>
+        <li><a href="#" data-category="Orman Evleri">Orman Evleri</a></li>
+    </ul>
+</div>
+                       </div>
+                   </div>
+               </div>
+           </div>
+
+           <div class="search-section">
+               <div class="search-container">
+                   <input type="text" class="search-input" id="search-input" placeholder="Herhangi bir şey ara...">
+               </div>
+               <button class="search-btn">Ara</button>
+           </div>
+
+
+       </div>
+   </div>
+
+   <div class="breadcrumb">
+       <div class="breadcrumb-content">
+           <a href="index.html">Ana Sayfa</a>
+           <span class="breadcrumb-separator">›</span>
+           <span id="breadcrumb-parent">Kent Mobilyası</span>
+           <span class="breadcrumb-separator">›</span>
+           <span class="breadcrumb-current" id="breadcrumb-current">Kategori</span>
+       </div>
+   </div>
+
+   <div class="main-content">
+       <div class="category-header">
+           <h1 class="category-title" id="category-title">Kategori</h1>
+           <p class="category-description" id="category-description">Bu kategori için özel ürünler.</p>
+       </div>
+
+       <div class="categories-sidebar">
+           <h3 class="sidebar-title">Kategoriler</h3>
+           <ul class="category-list">
+               <li><a href="index.html" class="active">Tümü</a></li>
+               <li><a href="#" class="main-category">Kent Mobilyası</a></li>
+               <li><a href="#" class="sub-category" data-category="Kamelyalar">Kamelyalar</a></li>
+               <li><a href="#" class="sub-category" data-category="Pergole">Pergole</a></li>
+               <li><a href="#" class="sub-category" data-category="Köprüler">Köprüler</a></li>
+               <li><a href="#" class="sub-category" data-category="Bekçi Kulübesi">Bekçi Kulübesi</a></li>
+               <li><a href="#" class="sub-category" data-category="Çitler">Çitler</a></li>
+               <li><a href="#" class="sub-category" data-category="Banklar">Banklar</a></li>
+               <li><a href="#" class="sub-category" data-category="Saksılar">Saksılar</a></li>
+               <li><a href="#" class="sub-category" data-category="Kulübeler">Kulübeler</a></li>
+               <li><a href="#" class="sub-category" data-category="Yer ve Duvar Döşeme">Yer ve Duvar Döşeme</a></li>
+               <li><a href="#" class="main-category">Oyun Grupları ve Parklar</a></li>
+               <li><a href="#" class="sub-category" data-category="Parklar">Parklar</a></li>
+               <li><a href="#" class="sub-category" data-category="Salıncaklar">Salıncaklar</a></li>
+               <li><a href="#" class="sub-category" data-category="Tırmanmalar">Tırmanmalar</a></li>
+               <li><a href="#" class="sub-category" data-category="Ahşap Oyun Evleri">Ahşap Oyun Evleri</a></li>
+               <li><a href="#" class="sub-category" data-category="Tahtarevalli ve Zıp Zıp">Tahtarevalli ve Zıp Zıp</a></li>
+               <li><a href="#" class="sub-category" data-category="Kauçuklar">Kauçuklar</a></li>
+               <li><a href="#" class="sub-category" data-category="Kum Havuzu">Kum Havuzu</a></li>
+               <li><a href="#" class="main-category">Ormanın Kalbi</a></li>
+<li><a href="#" class="sub-category" data-category="Orman Evleri">Orman Evleri</a></li>
+           </ul>
+       </div>
+
+       <div class="products-section">
+           <div class="products-header">
+               <div class="results-count" id="results-count">0 ürün bulundu</div>
+               <div class="sort-dropdown">
+                   <label for="sort">Sırala:</label>
+                   <select class="sort-select" id="sort" onchange="sortProducts()">
+    <option value="price-low">Fiyat: Düşükten Yükseğe</option>
+    <option value="price-high">Fiyat: Yüksekten Düşüğe</option>
+</select>
+               </div>
+           </div>
+
+           <div class="products-grid" id="products-grid">
+           </div>
+       </div>
+   </div>
+
+   <script>
+
+
+// Ürünleri JSON'dan yükle
+// Global değişken
+// Ürünleri JSON'dan yükle
+async function loadCategoryData() {
+    try {
+        // GitHub raw URL'den direkt çek
+        const response = await fetch('https://raw.githubusercontent.com/KULLANICI_ADI/REPO_ADI/main/build/products.json');
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error('Kategoriler yüklenirken hata:', error);
+        console.log('GitHub\'dan veri alınamadı');
+        return {};
+    }
+}
+
+// Kategori adını JSON key'ine çevir
+function getCategoryKey(categoryName) {
+    const categoryMap = {
+    'Kamelyalar': 'kamelyalar',
+    'Pergole': 'pergole',
+    'Köprüler': 'koprular',
+    'Parklar': 'parklar',
+    'Bekçi Kulübesi': 'bekciKulubesi',
+    'Çitler': 'citler',
+    'Banklar': 'banklar',
+    'Saksılar': 'saksilar',
+    'Kulübeler': 'kulubeler',
+    'Yer ve Duvar Döşeme': 'yerVeDuvarDoseme',
+    'Salıncaklar': 'salincaklar',
+    'Tırmanmalar': 'tirmanmalar',
+    'Ahşap Oyun Evleri': 'ahsapOyunEvleri',
+    'Tahtarevalli ve Zıp Zıp': 'tahtarevalliVeZipZip',
+    'Kauçuklar': 'kaucuklar',
+    'Kum Havuzu': 'kumHavuzu',
+    'Orman Evleri': 'ormanEvleri'
+};
+    return categoryMap[categoryName] || null;
+}
+
+// Arama fonksiyonları
+// Arama fonksiyonları
+// Arama fonksiyonları
+// Arama fonksiyonları
+// Arama fonksiyonları
+// Arama fonksiyonu - baştan yazıyoruz
+function searchProducts(searchTerm, categoryData) {
+    // Kısa ama anlamlı kelime istisnalar
+    const validShortTerms = [
+        'park', 'masa', 'bank', 'çit', 'kum', 'gemi', 'kale', 'ev', 'köprü', 'kule',
+        'kedi', 'köpek', 'kuş', 'fare', 'tır', 'araba', 'mini', 'büyük', 'küçük',
+        'ahşap', 'metal', 'taş', 'cam', 'ip', 'halat', 'top', 'baş', 'yan', 'alt',
+        'üst', 'orta', 'sol', 'sağ', 'ön', 'arka', 'dış', 'iç', 'açık', 'kapalı'
+    ];
+    
+    // Minimum 3 karakter kontrolü - ancak istisna kelimeler geçerli
+    const termLower = searchTerm.toLowerCase().trim();
+    const isValidShortTerm = validShortTerms.some(term => termLower.includes(term));
+    
+    if (searchTerm.length < 3 && !isValidShortTerm) {
+        return {
+            products: [],
+            categories: [],
+            totalCount: 0,
+            tooShort: true
+        };
+    }
+    
+    const allProducts = [];
+    const matchedCategories = [];
+    
+    // Tüm kategorileri ve ürünleri tara
+    Object.keys(categoryData).forEach(categoryKey => {
+        const category = categoryData[categoryKey];
+        
+        // Kategori adında arama terimi var mı kontrol et
+        if (category[0] && category[0].category && category[0].category.toLowerCase().includes(searchTerm.toLowerCase())) {
+            matchedCategories.push({
+                name: category[0].category,
+                products: category
+            });
+            allProducts.push(...category);
+        } else {
+            // Ürün adlarında arama terimi var mı kontrol et
+            const matchedProducts = category.filter(product => 
+                product.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                product.specs.toLowerCase().includes(searchTerm.toLowerCase())
+            );
+            
+            if (matchedProducts.length > 0) {
+                matchedCategories.push({
+                    name: matchedProducts[0].category,
+                    products: matchedProducts
+                });
+                allProducts.push(...matchedProducts);
+            }
+        }
+    });
+    
+    return {
+        products: allProducts,
+        categories: matchedCategories,
+        totalCount: allProducts.length,
+        tooShort: false
+    };
+}
+
+async function loadSearchResults(searchTerm) {
+    const categoryData = await loadCategoryData();
+    const searchResults = searchProducts(searchTerm, categoryData);
+    
+    // Sayfa başlığını güncelle
+    document.getElementById('page-title').textContent = `"${searchTerm}" Arama Sonuçları - Oyun Bahçesi`;
+    document.getElementById('category-title').textContent = `"${searchTerm}" için arama sonuçları`;
+    
+    if (searchResults.totalCount > 0) {
+        document.getElementById('category-description').textContent = 
+            `${searchResults.totalCount} ürün bulundu. Aşağıdaki kategorilerde eşleşme bulundu: ${searchResults.categories.map(c => c.name).join(', ')}`;
+        document.getElementById('results-count').textContent = `${searchResults.totalCount} ürün bulundu`;
+        loadProducts(searchResults.products);
+    } else {
+        document.getElementById('category-description').textContent = 'Aradığınız terimle eşleşen ürün bulunamadı.';
+        document.getElementById('results-count').textContent = 'Aradığınızı bulamadık';
+        showNoResults(searchTerm);
+    }
+    
+    // Breadcrumb güncelle
+    document.getElementById('breadcrumb-parent').textContent = 'Arama';
+    document.getElementById('breadcrumb-current').textContent = `"${searchTerm}"`;
+    
+    // Sidebar'da arama terimini göster
+    updateSidebarForSearch(searchTerm);
+}
+
+
+async function loadAllProducts(sortBy) {
+    const categoryData = await loadCategoryData();
+    const allProducts = [];
+    
+    // Tüm kategorilerden ürünleri topla
+    Object.values(categoryData).forEach(products => {
+        allProducts.push(...products);
+    });
+
+// 4.000 - 40.000 TL aralığında filtrele
+const filteredProducts = allProducts.filter(product => {
+    // Fiyatı temizle: ₺ işaretini, noktaları ve virgülleri kaldır
+    let cleanPrice = product.currentPrice.replace('₺', '').replace(/\./g, '').replace(',', '.');
+    const price = parseFloat(cleanPrice);
+    console.log(`Ürün: ${product.title}, Fiyat: ${product.currentPrice}, Temiz fiyat: ${price}`);
+    return price >= 4000 && price <= 40000;
+});
+
+console.log(`Toplam ${allProducts.length} ürün, ${filteredProducts.length} ürün 4000-40000 aralığında`);
+    
+    // Fiyata göre sırala
+    if (sortBy === 'price-low') {
+        allProducts.sort((a, b) => {
+            const priceA = parseFloat(a.currentPrice.replace(/[₺.,]/g, ''));
+            const priceB = parseFloat(b.currentPrice.replace(/[₺.,]/g, ''));
+            return priceA - priceB;
+        });
+    }
+    
+    // Sayfa güncelleme
+    document.getElementById('page-title').textContent = 'En Uygun Fiyatlı Ürünler - Oyun Bahçesi';
+    document.getElementById('category-title').textContent = 'En Uygun Fiyatlı Ürünler';
+    document.getElementById('category-description').textContent = 'Tüm ürünler fiyata göre sıralanmıştır.';
+    document.getElementById('breadcrumb-parent').textContent = 'Ürünler';
+    document.getElementById('breadcrumb-current').textContent = 'En Uygun Fiyatlı';
+document.getElementById('results-count').textContent = `${filteredProducts.length} ürün bulundu`;
+    
+    // Sıralama dropdown'unu price-low'a ayarla
+    document.getElementById('sort').value = 'price-low';
+    
+    loadProducts(filteredProducts);
+}
+
+function showNoResults(searchTerm) {
+    const productsGrid = document.getElementById('products-grid');
+    productsGrid.innerHTML = `
+        <div style="grid-column: 1 / -1; text-align: center; padding: 60px 20px; background: white; border-radius: 12px;">
+            <div style="font-size: 48px; margin-bottom: 20px;">🔍</div>
+            <h3 style="font-size: 24px; color: #333; margin-bottom: 10px; font-weight: 700;">Aradığınızı bulamadık</h3>
+            <p style="font-size: 16px; color: #666; margin-bottom: 30px;">"${searchTerm}" için sonuç bulunamadı</p>
+            <div style="font-size: 14px; color: #666; line-height: 1.6;">
+                <p><strong>Öneriler:</strong></p>
+                <p>• Yazım hatası olup olmadığını kontrol edin</p>
+                <p>• Daha genel terimler kullanmayı deneyin</p>
+                <p>• Kategori isimlerini deneyin: Parklar, Kamelyalar, Pergole</p>
+                <p>• Ürün kodları ile arama yapabilirsiniz</p>
+            </div>
+            <button onclick="window.location.href='index.html'" 
+                style="margin-top: 30px; background: #3665f3; color: white; border: none; padding: 12px 24px; 
+                       border-radius: 25px; font-size: 14px; font-weight: 600; cursor: pointer;">
+                Ana Sayfaya Dön
+            </button>
+        </div>
+    `;
+}
+
+function updateSidebarForSearch(searchTerm) {
+    // Sidebar'da aktif kategoriyi temizle
+    document.querySelectorAll('.category-list a').forEach(link => {
+        link.classList.remove('current-page', 'active');
+    });
+    
+    // Sidebar başlığını güncelle
+    document.querySelector('.sidebar-title').textContent = `"${searchTerm}" Arama`;
+}
+
+// Kullanıcı durumunu kontrol et
+function checkUserStatus() {
+    const currentUser = localStorage.getItem('currentUser');
+    const headerLeft = document.getElementById('headerLeft');
+    
+    if (currentUser) {
+        const user = JSON.parse(currentUser);
+        if (user.loggedIn) {
+            // Kullanıcı giriş yapmış - isim göster
+            headerLeft.innerHTML = `
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <span style="color: #333; font-weight: 600;">Hi ${user.firstName}! ▼</span>
+                    <a href="#" onclick="logout()" style="color: #0654ba; text-decoration: none; font-size: 12px; opacity: 0.8;">Çıkış</a>
+                </div>
+            `;
+        }
+    }
+}
+
+// Çıkış fonksiyonu
+function logout() {
+    localStorage.removeItem('currentUser');
+    location.reload();
+}
+
+// Watchlist fonksiyonları
+function openWatchlist() {
+    const currentUser = localStorage.getItem('currentUser');
+    
+    if (!currentUser) {
+        // Kullanıcı giriş yapmamış
+        showWatchlistModal('Lütfen istek listenizi görmek için giriş yapın', false);
+    } else {
+        // Kullanıcı giriş yapmış - watchlist göster
+        showWatchlistModal('İstek Listesi', true);
+    }
+}
+
+function showWatchlistModal(title, isLoggedIn) {
+    // Dropdown HTML oluştur
+    const dropdown = document.createElement('div');
+    dropdown.id = 'watchlistDropdown';
+    dropdown.innerHTML = `
+        <div style="position: absolute; top: 100%; right: 0; background: white; border: 1px solid #ddd; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); width: 650px; z-index: 1000; font-family: 'Inter Tight', sans-serif;">
+            <div id="watchlistContent">
+                ${isLoggedIn ? getWatchlistContent() : getLoginPrompt()}
+            </div>
+        </div>
+    `;
+    
+    // Watchlist linkinin pozisyonunu al
+    const watchlistLink = document.querySelector('.watchlist-link');
+    const rect = watchlistLink.getBoundingClientRect();
+    
+    // Dropdown'u watchlist linkinin altına yerleştir
+    dropdown.style.position = 'fixed';
+    dropdown.style.top = (rect.bottom + 5) + 'px';
+    dropdown.style.right = (window.innerWidth - rect.right) + 'px';
+    
+    document.body.appendChild(dropdown);
+    
+    // Dışarıya tıklayınca kapat
+    setTimeout(() => {
+        document.addEventListener('click', closeDropdownOnOutsideClick);
+    }, 100);
+}
+
+function closeDropdownOnOutsideClick(event) {
+    const dropdown = document.getElementById('watchlistDropdown');
+    if (dropdown && !dropdown.contains(event.target) && !event.target.closest('.watchlist-link')) {
+        closeWatchlistModal();
+        document.removeEventListener('click', closeDropdownOnOutsideClick);
+    }
+}
+
+function getLoginPrompt() {
+    return `
+        <div style="text-align: center; padding: 30px 20px;">
+            <h4 style="font-size: 16px; color: #333; margin-bottom: 10px;">Lütfen giriş yapın</h4>
+            <p style="color: #666; font-size: 14px; margin-bottom: 20px;">İstek listenizi görmek için giriş yapmanız gerekiyor.</p>
+            <button onclick="window.location.href='login.html'" style="background: #3665f3; color: white; border: none; padding: 10px 20px; border-radius: 20px; font-size: 14px; font-weight: 600; cursor: pointer;">
+                Giriş Yap
+            </button>
+        </div>
+    `;
+}
+
+function getWatchlistContent() {
+    const currentUser = localStorage.getItem('currentUser');
+if (!currentUser) return getLoginPrompt();
+
+const user = JSON.parse(currentUser);
+const watchlistKey = `watchlist_${user.email}`;
+const watchlist = JSON.parse(localStorage.getItem(watchlistKey) || '[]');
+    
+    if (watchlist.length === 0) {
+        return `
+            <div style="text-align: center; padding: 30px 20px;">
+                <h4 style="font-size: 16px; color: #333; margin-bottom: 10px;">Henüz istek listenize bir şey eklemediniz</h4>
+                <p style="color: #666; font-size: 14px; margin-bottom: 20px;">Beğendiğiniz ürünleri kalp simgesine tıklayarak ekleyebilirsiniz.</p>
+                <button onclick="closeWatchlistModal()" style="background: #3665f3; color: white; border: none; padding: 10px 20px; border-radius: 20px; font-size: 14px; font-weight: 600; cursor: pointer;">
+                    Alışverişe Devam
+                </button>
+            </div>
+        `;
+    }
+    
+    // Maksimum 3 ürün göster
+    const displayItems = watchlist.slice(0, 3);
+    
+    return `
+        <div style="padding: 20px;">
+${watchlist.length > 0 ? `
+    <div style="padding: 15px 20px; margin-bottom: 20px; cursor: pointer; display: flex; align-items: center; gap: 10px;" onclick="window.location.href='watchlist.html'">
+    <span style="font-size: 16px; font-weight: 700; color: #333;">View all items you are watching</span>
+    <span style="font-size: 18px; color: #333;">→</span>
+</div>
+` : ''}
+           <div style="display: flex; gap: 15px; justify-content: ${displayItems.length === 3 ? 'center' : 'flex-start'}; flex-wrap: nowrap; max-width: 620px;">
+                ${displayItems.map(item => `
+                    <div style="width: 180px; border: 1px solid #e5e5e5; border-radius: 8px; overflow: hidden; position: relative; flex-shrink: 0;">
+                        <div style="width: 100%; height: 140px; background: #f5f5f5; display: flex; align-items: center; justify-content: center;">
+                            ${item.image ? `<img src="${item.image}" style="width: 100%; height: 100%; object-fit: cover;">` : '<div style="color: #ccc; font-size: 14px;">No image</div>'}
+                        </div>
+                        <div style="padding: 10px;">
+                            <h4 style="font-size: 13px; font-weight: 600; color: #333; margin-bottom: 6px; line-height: 1.3; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">${item.title}</h4>
+                            <p style="font-size: 14px; font-weight: 700; color: #333; margin: 0;">${item.price}</p>
+                        </div>
+                        <button onclick="removeFromWatchlist('${item.id}')" style="position: absolute; top: 8px; right: 8px; background: rgba(255,255,255,0.9); border: none; width: 24px; height: 24px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 14px;">
+                            ❤️
+                        </button>
+                    </div>
+                `).join('')}
+            </div>
+        </div>
+    `;
+}
+
+function closeWatchlistModal() {
+    const dropdown = document.getElementById('watchlistDropdown');
+    if (dropdown) {
+        dropdown.remove();
+    }
+    document.removeEventListener('click', closeDropdownOnOutsideClick);
+}
+
+
+
+// Watchlist'e ürün ekleme
+function addToWatchlist(productId, title, price, image, specs) {
+    const currentUser = localStorage.getItem('currentUser');
+    if (!currentUser) return false;
+    
+    const user = JSON.parse(currentUser);
+    const watchlistKey = `watchlist_${user.email}`;
+    const watchlist = JSON.parse(localStorage.getItem(watchlistKey) || '[]');
+    
+    // Zaten var mı kontrol et
+    const exists = watchlist.find(item => item.id === productId);
+    if (exists) {
+        return false; // Zaten var
+    }
+    
+    // Yeni ürün ekle (her zaman ekle, dropdown'da sadece ilk 3 gözükür)
+    watchlist.push({
+        id: parseInt(productId),
+        id: productId,
+        title: title,
+        price: price,
+        image: image,
+        specs: specs,
+        addedAt: new Date().toISOString()
+    });
+    
+    localStorage.setItem(watchlistKey, JSON.stringify(watchlist));
+    return true; // Başarıyla eklendi
+}
+
+// Watchlist'den ürün çıkarma
+function removeFromWatchlist(productId) {
+    const currentUser = localStorage.getItem('currentUser');
+    if (!currentUser) return;
+    
+    const user = JSON.parse(currentUser);
+    const watchlistKey = `watchlist_${user.email}`;
+    const watchlist = JSON.parse(localStorage.getItem(watchlistKey) || '[]');
+    const filtered = watchlist.filter(item => item.id !== productId);
+    localStorage.setItem(watchlistKey, JSON.stringify(filtered));
+    
+    // Modal'ı yenile - sadece kalan ürünleri göster
+    const watchlistContent = document.getElementById('watchlistContent');
+    if (watchlistContent) {
+        watchlistContent.innerHTML = getWatchlistContent();
+    }
+    
+    // Sayfadaki tüm kalp butonlarını güncelle
+    updateHeartButtons();
+}
+
+function showLoginPrompt(button) {
+    // Önceki dropdown'ı kaldır
+    const existingDropdown = document.getElementById('loginPromptDropdown');
+    if (existingDropdown) {
+        existingDropdown.remove();
+    }
+    
+    // Dropdown HTML oluştur
+    const dropdown = document.createElement('div');
+    dropdown.id = 'loginPromptDropdown';
+    dropdown.innerHTML = `
+        <div style="position: absolute; bottom: 100%; left: 50%; transform: translateX(-50%); background: white; border: 1px solid #ddd; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); width: 300px; z-index: 1000; font-family: 'Inter Tight', sans-serif; margin-bottom: 10px;">
+            <div style="text-align: center; padding: 30px 20px;">
+                <h4 style="font-size: 16px; color: #333; margin-bottom: 10px;">Lütfen giriş yapın</h4>
+                <p style="color: #666; font-size: 14px; margin-bottom: 20px;">İstek listenize ürün eklemek için giriş yapmanız gerekiyor.</p>
+                <button onclick="window.location.href='login.html'" style="background: #3665f3; color: white; border: none; padding: 10px 20px; border-radius: 20px; font-size: 14px; font-weight: 600; cursor: pointer;">
+                    Giriş Yap
+                </button>
+            </div>
+        </div>
+    `;
+    
+    // Butonun pozisyonunu al ve dropdown'u yerleştir
+    // Butonun pozisyonunu al ve dropdown'u body'ye ekle
+const rect = button.getBoundingClientRect();
+dropdown.style.position = 'fixed';
+dropdown.style.top = (rect.top - 10) + 'px';
+dropdown.style.left = (rect.left + rect.width/2) + 'px';
+dropdown.style.transform = 'translateX(-50%)';
+dropdown.style.zIndex = '9999';
+
+document.body.appendChild(dropdown);
+    
+    // 3 saniye sonra otomatik kapat
+    // 3 saniye sonra otomatik kapat
+setTimeout(() => {
+    if (document.body.contains(dropdown)) {
+        dropdown.remove();
+    }
+}, 3000);
+    
+    // Dışarıya tıklayınca kapat
+    setTimeout(() => {
+        document.addEventListener('click', function closePrompt(event) {
+            if (!dropdown.contains(event.target) && !button.contains(event.target)) {
+                dropdown.remove();
+                document.removeEventListener('click', closePrompt);
+            }
+        });
+    }, 100);
+}
+
+function updateHeartButtons() {
+    // Sayfadaki tüm kalp butonlarını bul ve güncelle
+    document.querySelectorAll('.wishlist-btn').forEach(button => {
+        const productId = button.onclick.toString().match(/'(\d+)'/)[1];
+        if (productId) {
+            const isInWish = isInWatchlist(productId);
+            button.textContent = isInWish ? '♥' : '♡';
+            button.style.color = isInWish ? '#ff4444' : '#666';
+        }
+    });
+}
+
+// Ürün kalp butonlarını kontrol et
+function isInWatchlist(productId) {
+    const currentUser = localStorage.getItem('currentUser');
+    if (!currentUser) return false;
+    
+    const user = JSON.parse(currentUser);
+    const watchlistKey = `watchlist_${user.email}`;
+    const watchlist = JSON.parse(localStorage.getItem(watchlistKey) || '[]');
+    return watchlist.some(item => item.id === productId);
+}
+
+function toggleWishlist(productId, title, price, image, specs, button) {
+    const currentUser = localStorage.getItem('currentUser');
+    
+    if (!currentUser) {
+        showLoginPrompt(button);
+        return;
+    }
+    
+    const isCurrentlyInWatchlist = isInWatchlist(productId);
+    
+    if (isCurrentlyInWatchlist) {
+        // Çıkar
+        removeFromWatchlist(productId);
+        button.textContent = '♡';
+        button.style.color = '#666';
+    } else {
+        // Ekle
+        const added = addToWatchlist(productId, title, price, image, specs);
+        if (added) {
+            button.textContent = '♥';
+            button.style.color = '#ff4444';
+        }
+    }
+}
+
+
+
+
+       // Ana sayfa JS fonksiyonları
+       function toggleDropdown() {
+           const dropdown = document.getElementById('categoryDropdown');
+           dropdown.classList.toggle('show');
+       }
+
+
+       // Close dropdown when clicking outside
+       window.onclick = function(event) {
+           if (!event.target.matches('.category-btn') && !event.target.matches('.category-btn span')) {
+               const dropdown = document.getElementById('categoryDropdown');
+               if (dropdown.classList.contains('show')) {
+                   dropdown.classList.remove('show');
+               }
+           }
+       }
+
+       // Kategori sayfası JS fonksiyonları
+       function getUrlParameter(name) {
+           const urlParams = new URLSearchParams(window.location.search);
+           return urlParams.get(name);
+       }
+
+async function loadCategory(categoryName) {
+    const categoryData = await loadCategoryData();
+    const categoryKey = getCategoryKey(categoryName);
+    
+    if (!categoryKey || !categoryData[categoryKey]) {
+        window.location.href = 'index.html';
+        return;
+    }
+    
+    const products = categoryData[categoryKey];
+    
+    // Sayfa güncelleme
+    document.getElementById('page-title').textContent = `${categoryName} - Oyun Bahçesi`;
+    document.getElementById('category-title').textContent = categoryName;
+    document.getElementById('category-description').textContent = `${categoryName} kategorisindeki ürünler.`;
+    document.getElementById('breadcrumb-parent').textContent = 'Kategoriler';
+    document.getElementById('breadcrumb-current').textContent = categoryName;
+    document.getElementById('results-count').textContent = `${products.length} ürün bulundu`;
+    document.getElementById('search-input').placeholder = `Herhangi bir şey ara...`;
+
+    // Sidebar'da aktif kategoriyi işaretle
+    document.querySelectorAll('.sub-category').forEach(link => {
+        link.classList.remove('current-page');
+        if (link.dataset.category === categoryName) {
+            link.classList.add('current-page');
+        }
+    });
+
+    loadProducts(products);
+}
+
+function loadProducts(products) {
+    currentProducts = products; // Global değişkene kaydet
+    const productsGrid = document.getElementById('products-grid');
+    productsGrid.innerHTML = '';
+
+    products.forEach(product => {
+        const productCard = createProductCard(product);
+        productsGrid.appendChild(productCard);
+    });
+}
+
+       function createProductCard(product) {
+           const card = document.createElement('div');
+           card.className = 'product-card';
+           card.onclick = () => window.location.href = `details.html?id=${product.id}`;
+
+           const hasImage = product.image ? 'has-image' : '';
+           const imageContent = product.image ? `<img src="${product.image}" alt="${product.title}">` : '';
+           const badge = product.badge ? `<div class="product-badge">${product.badge}</div>` : '';
+           const originalPrice = product.originalPrice ? `<span class="original-price">${product.originalPrice}</span>` : '';
+           const discount = product.discount ? `<span class="discount-badge">${product.discount}</span>` : '';
+
+           card.innerHTML = `
+               <div class="product-image ${hasImage}">
+                   ${imageContent}
+                   ${badge}
+               </div>
+               <div class="product-info">
+                   <h3 class="product-title">${product.title}</h3>
+                   <p class="product-specs">${product.specs}</p>
+                   <div class="product-price">
+                       <span class="current-price">${product.currentPrice}</span>
+                       ${originalPrice}
+                       ${discount}
+                   </div>
+                   <div class="product-actions">
+    <button class="add-to-cart-btn">Sepete Ekle</button>
+  <button class="wishlist-btn" onclick="event.stopPropagation(); toggleWishlist('${product.id}', '${product.title}', '${product.currentPrice}', '${product.image || ''}', '${product.specs}', this)" style="color: ${isInWatchlist(product.id) ? '#ff4444' : '#666'};">${isInWatchlist(product.id) ? '♥' : '♡'}</button>
+               </div>
+           `;
+
+           const addToCartBtn = card.querySelector('.add-to-cart-btn');
+           const wishlistBtn = card.querySelector('.wishlist-btn');
+
+addToCartBtn.addEventListener('click', function(e) {
+               e.stopPropagation();
+               
+               const currentUser = localStorage.getItem('currentUser');
+               if (!currentUser) {
+                   alert('Sepete ürün eklemek için lütfen giriş yapın!');
+                   return;
+               }
+               
+               this.textContent = 'Ekleniyor...';
+               this.style.opacity = '0.7';
+               
+               // Sepete ekle
+               const added = addToBasket(product.id, product.title, product.currentPrice, product.image || '', product.specs);
+               
+               setTimeout(() => {
+                   if (added) {
+                       this.textContent = 'Sepete Eklendi';
+                       this.style.background = '#00c853';
+                       updateCartBadge(); // BUNU EKLE
+                       
+                       setTimeout(() => {
+                           this.textContent = 'Sepete Ekle';
+                           this.style.background = '#3665f3';
+                           this.style.opacity = '1';
+                       }, 2000);
+                   }
+               }, 1000);
+           });
+
+           // Sepet fonksiyonları
+           function addToBasket(productId, title, price, image, specs) {
+               const currentUser = localStorage.getItem('currentUser');
+               if (!currentUser) return false;
+               
+               const user = JSON.parse(currentUser);
+               const basketKey = `basket_${user.email}`;
+               const basket = JSON.parse(localStorage.getItem(basketKey) || '[]');
+               
+               const existingItem = basket.find(item => item.id === productId);
+               if (existingItem) {
+                   existingItem.quantity += 1;
+               } else {
+                   basket.push({
+                       id: productId,
+                       title: title,
+                       price: price,
+                       image: image,
+                       specs: specs,
+                       quantity: 1,
+                       addedAt: new Date().toISOString()
+                   });
+               }
+               
+               localStorage.setItem(basketKey, JSON.stringify(basket));
+               return true;
+           }
+
+
+
+           return card;
+       }
+
+       // Event listeners
+       // Event listeners
+// Event listeners
+let currentProducts = []; // Global değişken ekle
+
+// Sıralama fonksiyonu
+function sortProducts() {
+    const sortValue = document.getElementById('sort').value;
+    
+    if (sortValue === 'price-low') {
+        currentProducts.sort((a, b) => {
+            const priceA = parseFloat(a.currentPrice.replace(/[₺.,]/g, ''));
+            const priceB = parseFloat(b.currentPrice.replace(/[₺.,]/g, ''));
+            return priceA - priceB;
+        });
+    } else if (sortValue === 'price-high') {
+        currentProducts.sort((a, b) => {
+            const priceA = parseFloat(a.currentPrice.replace(/[₺.,]/g, ''));
+            const priceB = parseFloat(b.currentPrice.replace(/[₺.,]/g, ''));
+            return priceB - priceA;
+        });
+    }
+    
+    loadProducts(currentProducts);
+}
+
+function updateCartBadge() {
+    const currentUser = localStorage.getItem('currentUser');
+    const cartBadge = document.getElementById('cartBadge');
+    
+    if (!currentUser || !cartBadge) {
+        if (cartBadge) cartBadge.classList.add('hidden');
+        return;
+    }
+    
+    const user = JSON.parse(currentUser);
+    const basketKey = `basket_${user.email}`;
+    const basket = JSON.parse(localStorage.getItem(basketKey) || '[]');
+    
+    const totalItems = basket.reduce((sum, item) => sum + item.quantity, 0);
+    
+    if (totalItems > 0) {
+        cartBadge.textContent = totalItems > 99 ? '99+' : totalItems.toString();
+        cartBadge.classList.remove('hidden');
+    } else {
+        cartBadge.classList.add('hidden');
+    }
+}
+
+// LocalStorage değişikliklerini dinle
+function listenForCartChanges() {
+    window.addEventListener('storage', function(e) {
+        if (e.key && e.key.includes('basket_')) {
+            updateCartBadge();
+        }
+    });
+    
+    // Aynı sekme içindeki değişiklikleri takip et
+    const originalSetItem = localStorage.setItem;
+    localStorage.setItem = function(key, value) {
+        originalSetItem.apply(this, arguments);
+        if (key.includes('basket_')) {
+            updateCartBadge();
+        }
+    };
+}
+
+// Event listeners
+document.addEventListener('DOMContentLoaded', async function() {
+    checkUserStatus();
+    updateCartBadge();
+    listenForCartChanges(); // BUNU EKLE
+    
+    // Önce veriyi yükle
+    await loadCategoryData();
+    
+    const categoryName = getUrlParameter('category');
+    const searchTerm = getUrlParameter('search');
+    const showAll = getUrlParameter('all');
+    const sortBy = getUrlParameter('sort');
+    
+    if (showAll) {
+        loadAllProducts(sortBy);
+    } else if (categoryName) {
+        loadCategory(categoryName);
+    } else if (searchTerm) {
+        loadSearchResults(searchTerm);
+    } else {
+        window.location.href = 'index.html';
+    }
+});
+
+       // Sidebar kategori linkleri
+       document.querySelectorAll('.sub-category').forEach(link => {
+           link.addEventListener('click', function(e) {
+               e.preventDefault();
+               const categoryName = this.dataset.category;
+               window.location.href = `category.html?category=${encodeURIComponent(categoryName)}`;
+           });
+       });
+
+       // Dropdown kategori linkleri
+// Dropdown kategori linkleri
+document.querySelectorAll('.dropdown-column a').forEach(link => {
+    link.addEventListener('click', function(e) {
+        e.preventDefault();
+        const categoryName = this.textContent.trim();
+        window.location.href = `category.html?category=${encodeURIComponent(categoryName)}`;
+        document.getElementById('categoryDropdown').classList.remove('show');
+    });
+});
+
+       // Add click events to popular categories section
+
+
+       // Search functionality
+       // Search functionality
+document.querySelector('.search-btn').addEventListener('click', function() {
+    const searchTerm = document.querySelector('.search-input').value.trim();
+    if (searchTerm) {
+        // Mevcut sayfada arama sonuçlarını göster
+        window.location.href = `category.html?search=${encodeURIComponent(searchTerm)}`;
+    } else {
+        alert('Lütfen arama yapmak için bir terim girin.');
+    }
+});
+
+       // Add enter key support for search
+       document.querySelector('.search-input').addEventListener('keypress', function(e) {
+           if (e.key === 'Enter') {
+               document.querySelector('.search-btn').click();
+           }
+       });
+
+       // Add keyboard navigation for dropdown
+       document.addEventListener('keydown', function(e) {
+           const dropdown = document.getElementById('categoryDropdown');
+           if (e.key === 'Escape' && dropdown.classList.contains('show')) {
+               dropdown.classList.remove('show');
+           }
+       });
+   </script>
+</body>
+</html>
