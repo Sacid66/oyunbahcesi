@@ -318,6 +318,58 @@ app.get('/hero-products.json', async (req, res) => {
 
 // Products.json güncelleme API (Qt uygulaması için)
 // Products.json güncelleme API (Qt uygulaması için)
+// HTTP alternatif endpoint ekle (Qt SSL sorunu için)
+app.post('/api/update-products-http', async (req, res) => {
+    try {
+        const newProductsData = req.body;
+        
+        if (!newProductsData) {
+            return res.status(400).json({ 
+                success: false, 
+                message: 'Ürün verisi gerekli!' 
+            });
+        }
+
+        // Mevcut products.json dosyasını bul
+        const possiblePaths = [
+            path.join(__dirname, 'build', 'products.json'),
+            path.join(__dirname, 'products.json'),
+            path.join(__dirname, 'public', 'products.json'),
+            path.join(__dirname, 'data', 'products.json')
+        ];
+        
+        let targetPath = possiblePaths[0]; // Varsayılan
+        
+        // Mevcut dosyayı bul
+        for (const testPath of possiblePaths) {
+            try {
+                await fs.access(testPath);
+                targetPath = testPath;
+                break;
+            } catch (err) {
+                continue;
+            }
+        }
+        
+        // products.json dosyasını güncelle
+        await fs.writeFile(targetPath, JSON.stringify(newProductsData, null, 2));
+        
+        console.log(`Products.json dosyası güncellendi: ${targetPath}`);
+        
+        res.status(200).json({ 
+            success: true, 
+            message: 'Ürün veritabanı başarıyla güncellendi!' 
+        });
+    } catch (error) {
+        console.error('Products.json güncelleme hatası:', error);
+        res.status(500).json({ 
+            success: false, 
+            message: 'Ürün veritabanı güncellenirken hata oluştu!' 
+        });
+    }
+});
+
+// Products.json güncelleme API (Qt uygulaması için) - HTTPS
 app.post('/api/update-products', async (req, res) => {
     try {
         const newProductsData = req.body;
