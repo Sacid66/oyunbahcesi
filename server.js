@@ -178,6 +178,7 @@ app.post('/api/check-email', async (req, res) => {
 });
 
 // Tüm kullanıcıları listele (test için)
+// Tüm kullanıcıları listele (test için)
 app.get('/api/users', async (req, res) => {
     try {
         const users = await readUsers();
@@ -198,6 +199,99 @@ app.get('/api/users', async (req, res) => {
         res.status(500).json({ 
             success: false, 
             message: 'Sunucu hatası!' 
+        });
+    }
+});
+
+// Products.json dosyasını serve et
+app.get('/products.json', async (req, res) => {
+    try {
+        const productsPath = path.join(__dirname, 'products.json');
+        const data = await fs.readFile(productsPath, 'utf8');
+        const products = JSON.parse(data);
+        
+        res.status(200).json(products);
+    } catch (error) {
+        console.error('Products.json okuma hatası:', error);
+        res.status(500).json({ 
+            success: false, 
+            message: 'Ürünler yüklenirken hata oluştu!' 
+        });
+    }
+});
+
+// Hero products dosyasını serve et
+app.get('/hero-products.json', async (req, res) => {
+    try {
+        const heroPath = path.join(__dirname, 'hero-products.json');
+        const data = await fs.readFile(heroPath, 'utf8');
+        const heroProducts = JSON.parse(data);
+        
+        res.status(200).json(heroProducts);
+    } catch (error) {
+        // Dosya yoksa boş obje döndür
+        res.status(200).json({});
+    }
+});
+
+// Products.json güncelleme API (Qt uygulaması için)
+app.post('/api/update-products', async (req, res) => {
+    try {
+        const newProductsData = req.body;
+        
+        if (!newProductsData) {
+            return res.status(400).json({ 
+                success: false, 
+                message: 'Ürün verisi gerekli!' 
+            });
+        }
+
+        // products.json dosyasını güncelle
+        const productsPath = path.join(__dirname, 'products.json');
+        await fs.writeFile(productsPath, JSON.stringify(newProductsData, null, 2));
+        
+        console.log('Products.json dosyası güncellendi');
+        
+        res.status(200).json({ 
+            success: true, 
+            message: 'Ürün veritabanı başarıyla güncellendi!' 
+        });
+    } catch (error) {
+        console.error('Products.json güncelleme hatası:', error);
+        res.status(500).json({ 
+            success: false, 
+            message: 'Ürün veritabanı güncellenirken hata oluştu!' 
+        });
+    }
+});
+
+// Hero products güncelleme API (Qt uygulaması için)
+app.post('/api/update-hero-products', async (req, res) => {
+    try {
+        const newHeroData = req.body;
+        
+        if (!newHeroData) {
+            return res.status(400).json({ 
+                success: false, 
+                message: 'Hero ürün verisi gerekli!' 
+            });
+        }
+
+        // hero-products.json dosyasını güncelle
+        const heroPath = path.join(__dirname, 'hero-products.json');
+        await fs.writeFile(heroPath, JSON.stringify(newHeroData, null, 2));
+        
+        console.log('Hero-products.json dosyası güncellendi');
+        
+        res.status(200).json({ 
+            success: true, 
+            message: 'Hero ürünler başarıyla güncellendi!' 
+        });
+    } catch (error) {
+        console.error('Hero-products.json güncelleme hatası:', error);
+        res.status(500).json({ 
+            success: false, 
+            message: 'Hero ürünler güncellenirken hata oluştu!' 
         });
     }
 });
